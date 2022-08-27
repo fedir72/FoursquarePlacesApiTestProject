@@ -48,7 +48,6 @@
 				C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */,
 				568BE2585C74938EFA91D0AD /* Pods-FoursquarePlacesApiTestProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +80,71 @@
 		BD0E65B828BA1BE600AD1AC8 /* FoursquarePlacesApiTestProject */ = {
 			isa = PBXGroup;
 			children = (
-				BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */,
-				BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */,
-				BD0E65BD28BA1BE600AD1AC8 /* ViewController.swift */,
-				BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */,
-				BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */,
-				BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */,
 				BD0E65C728BA1BE900AD1AC8 /* Info.plist */,
+				BD0E65CE28BA1F3600AD1AC8 /* Application */,
+				BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */,
+				BD0E65CD28BA1F2300AD1AC8 /* Views */,
 			);
 			path = FoursquarePlacesApiTestProject;
+			sourceTree = "<group>";
+		};
+		BD0E65CD28BA1F2300AD1AC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E65BD28BA1BE600AD1AC8 /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BD0E65CE28BA1F3600AD1AC8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E65CF28BA1F5700AD1AC8 /* Storyboards */,
+				BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */,
+				BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */,
+				BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BD0E65CF28BA1F5700AD1AC8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */,
+				BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E65D328BA1FE600AD1AC8 /* MoyaLayer */,
+				BD0E65D228BA1FC600AD1AC8 /* Models */,
+				BD0E65D128BA1FB000AD1AC8 /* Jsons */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		BD0E65D128BA1FB000AD1AC8 /* Jsons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Jsons;
+			sourceTree = "<group>";
+		};
+		BD0E65D228BA1FC600AD1AC8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BD0E65D328BA1FE600AD1AC8 /* MoyaLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MoyaLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
