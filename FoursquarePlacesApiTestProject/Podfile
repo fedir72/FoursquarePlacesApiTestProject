@@ -7,5 +7,6 @@ target 'FoursquarePlacesApiTestProject' do
 
   # Pods for FoursquarePlacesApiTestProject
    pod 'Moya'
+   pod 'SDWebImage'
 
 end

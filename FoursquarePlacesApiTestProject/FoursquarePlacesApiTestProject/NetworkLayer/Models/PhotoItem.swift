@@ -16,6 +16,12 @@ struct PhotoItem: Decodable {
    let height: Int
 }
 
+extension PhotoItem {
+    func photoUrlStr(w: Int, h: Int) -> URL? {
+        return URL(string: self.prefix + "\(w)x\(h)" + self.suffix)
+    }
+}
+
 typealias Photos = [PhotoItem]
 
 
