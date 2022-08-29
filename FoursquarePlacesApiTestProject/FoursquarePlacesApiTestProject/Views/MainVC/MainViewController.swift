@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
          setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Nearest"
-        fsqProvider.request(.getPlaces(term: "market",
+        fsqProvider.request(.getPlaces(term: "stuff",
                                        lat: 51.509865,
                                        long: -0.118092,
                                        radius: 1000,
@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
             switch result {
                 
             case .success(let responce):
-                print("Data",String(data: responce.data, encoding: .utf8))
+               // print("Data",String(data: responce.data, encoding: .utf8))
                 guard let value = self.decodejson(type: Places.self, from: responce.data) else {
                     print("do not decoded")
                     return
@@ -68,6 +68,11 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let item = datasourse[indexPath.row]
+        self.cellDidTap(id: item.fsq_id, title: item.name )
+    }
     
 }
 
@@ -89,6 +94,50 @@ private extension MainViewController {
             print("data has been not decoded : \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    func cellDidTap(id: String,title: String ) {
+        let alert = UIAlertController(title: "Atencion", message: "Please make choise", preferredStyle: .alert)
+        alert.addAction(.init(title: "Cancel", style: .destructive))
+        alert.addAction(.init(title: "Show photos", style: .default) { _ in
+            
+            self.fsqProvider.request(.placePhotos(id: id)) { result in
+                switch result {
+                case .success(let responce):
+                   // print("Data", String(data: responce.data, encoding: .utf8))
+                    if let items = self.decodejson(type: Photos.self, from: responce.data),
+                       items.count > 0
+                    {
+                        print(items.count)
+                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: PhotoViewController.id) as? PhotoViewController {
+                            vc.dataSourse = items
+                            vc.title = title
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    } else {
+                        self.someWrongAlert("Sorry",
+                                            "but for this place we can not present you any photos, you could be first")
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+        })
+        alert.addAction(.init(title: "Show tips", style: .default) { _ in
+            self.fsqProvider.request(.placeTips(id: id)) { result in
+                switch result {
+                case .success(let responce):
+                    if let items = self.decodejson(type: Tips.self, from: responce.data) {
+                        print(items.count)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+        })
+        present(alert, animated: true)
     }
     
     

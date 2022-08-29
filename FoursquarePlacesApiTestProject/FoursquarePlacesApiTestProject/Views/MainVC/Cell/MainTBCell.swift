@@ -19,6 +19,7 @@ class MainTBCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var categoryNameLAbel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.layer.cornerRadius = 8
@@ -38,6 +39,7 @@ class MainTBCell: UITableViewCell {
     
     func setupCell(with place: Place) {
         nameLabel.text = place.name
+        categoryNameLAbel.text = place.categories.first?.name ?? "not found"
        let url = place.categories.first?.icon.iconURl(resolution: .small)
        iconImageView.sd_setImage(with: url,
                                  placeholderImage: UIImage(systemName: "questionmark") )

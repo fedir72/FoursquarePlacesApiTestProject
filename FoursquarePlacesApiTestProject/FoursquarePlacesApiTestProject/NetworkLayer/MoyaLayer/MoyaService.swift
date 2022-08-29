@@ -66,11 +66,12 @@ extension FoursquareService: TargetType {
                 "ll": "\(lat),\(long)",
                 "radius": radius,
                 "limit": limit], encoding: URLEncoding.default)
-        case .placeIDetails(_),.placePhotos(_) :
+        case .placeIDetails(_):
             return .requestPlain
-        case .placeTips(_):
+        case .placeTips(_),.placePhotos(_):
             return .requestParameters(parameters: [
-                "limit":"50" ,"sort":"newest"
+                "limit":"50",
+                "sort":"newest"
             ], encoding: URLEncoding.default)
         }
     }

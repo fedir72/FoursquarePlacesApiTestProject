@@ -8,17 +8,24 @@
 import Foundation
 
 struct PhotoItem: Decodable {
-   let id: String
-   let created_at: String
-   let prefix: String
-   let suffix: String
-   let width: Int
-   let height: Int
+   let id: String?
+   let created_at: String?
+   let prefix: String?
+   let suffix: String?
+   let width: Int?
+   let height: Int?
 }
 
 extension PhotoItem {
     func photoUrlStr(w: Int, h: Int) -> URL? {
-        return URL(string: self.prefix + "\(w)x\(h)" + self.suffix)
+        guard let p = self.prefix, let s = self.suffix else {
+            return nil
+        }
+        return URL(string: p + "\(w)x\(h)" + s)
+    }
+    
+    func dateStr() -> String {
+        return String(self.created_at?.split(separator: "T")[0] ?? "no data") 
     }
 }
 

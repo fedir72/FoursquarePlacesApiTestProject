@@ -39,6 +39,21 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="83.705357142857139"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="n3F-XH-dhu">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewController" id="QVN-uZ-6Y2" customClass="PhotoViewController" customModule="FoursquarePlacesApiTestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v71-hm-7S1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EpK-cV-QnV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izE-vQ-kxt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="84"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="New-yc-OBL">
             <objects>
