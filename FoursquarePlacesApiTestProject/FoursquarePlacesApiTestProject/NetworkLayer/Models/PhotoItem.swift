@@ -16,6 +16,9 @@ struct PhotoItem: Decodable {
    let height: Int
 }
 
+typealias Photos = [PhotoItem]
+
+
 /*
 "id": "5aeb7f7389ad460024c22206",
 "created_at": "2018-05-03T21:30:27.000Z",

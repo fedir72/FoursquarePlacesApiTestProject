@@ -13,5 +13,5 @@ struct PlacesNearbe: Decodable {
 
 struct Places: Decodable {
     let results: [Place]
-    let contexst: Context
+    let context: Context
 }

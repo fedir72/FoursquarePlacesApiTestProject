@@ -13,7 +13,7 @@
 		BD0E65C128BA1BE600AD1AC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */; };
 		BD0E65C328BA1BE900AD1AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */; };
 		BD0E65C628BA1BE900AD1AC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */; };
-		BD0E65D528BA21B600AD1AC8 /* MoyaLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65D428BA21B600AD1AC8 /* MoyaLayer.swift */; };
+		BD0E65D528BA21B600AD1AC8 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65D428BA21B600AD1AC8 /* MoyaService.swift */; };
 		BD0E65D728BA228B00AD1AC8 /* Place.json in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65D628BA228B00AD1AC8 /* Place.json */; };
 		BD0E65D928BA22A200AD1AC8 /* Places.json in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65D828BA22A200AD1AC8 /* Places.json */; };
 		BD0E65DB28BA22C500AD1AC8 /* Placesnearby.json in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65DA28BA22C500AD1AC8 /* Placesnearby.json */; };
@@ -24,6 +24,7 @@
 		BD0E65E528BA240B00AD1AC8 /* PlaceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E428BA240B00AD1AC8 /* PlaceModels.swift */; };
 		BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E628BA247200AD1AC8 /* ContextModels.swift */; };
 		BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */; };
+		BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6203A128BB77C400DE8905 /* TipsModels.swift */; };
 		EE4F1DBFFC711F82713B4AF0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +39,7 @@
 		BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD0E65C528BA1BE900AD1AC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD0E65C728BA1BE900AD1AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD0E65D428BA21B600AD1AC8 /* MoyaLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLayer.swift; sourceTree = "<group>"; };
+		BD0E65D428BA21B600AD1AC8 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		BD0E65D628BA228B00AD1AC8 /* Place.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Place.json; sourceTree = "<group>"; };
 		BD0E65D828BA22A200AD1AC8 /* Places.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Places.json; sourceTree = "<group>"; };
 		BD0E65DA28BA22C500AD1AC8 /* Placesnearby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Placesnearby.json; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		BD0E65E428BA240B00AD1AC8 /* PlaceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModels.swift; sourceTree = "<group>"; };
 		BD0E65E628BA247200AD1AC8 /* ContextModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModels.swift; sourceTree = "<group>"; };
 		BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesAndNearbyModels.swift; sourceTree = "<group>"; };
+		BD6203A128BB77C400DE8905 /* TipsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModels.swift; sourceTree = "<group>"; };
 		C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; path = "Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,8 +106,8 @@
 			children = (
 				BD0E65C728BA1BE900AD1AC8 /* Info.plist */,
 				BD0E65CE28BA1F3600AD1AC8 /* Application */,
-				BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */,
 				BD0E65CD28BA1F2300AD1AC8 /* Views */,
+				BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */,
 			);
 			path = FoursquarePlacesApiTestProject;
 			sourceTree = "<group>";
@@ -168,6 +170,7 @@
 				BD0E65E428BA240B00AD1AC8 /* PlaceModels.swift */,
 				BD0E65E628BA247200AD1AC8 /* ContextModels.swift */,
 				BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */,
+				BD6203A128BB77C400DE8905 /* TipsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,7 +178,7 @@
 		BD0E65D328BA1FE600AD1AC8 /* MoyaLayer */ = {
 			isa = PBXGroup;
 			children = (
-				BD0E65D428BA21B600AD1AC8 /* MoyaLayer.swift */,
+				BD0E65D428BA21B600AD1AC8 /* MoyaService.swift */,
 			);
 			path = MoyaLayer;
 			sourceTree = "<group>";
@@ -304,7 +307,8 @@
 				BD0E65BE28BA1BE600AD1AC8 /* ViewController.swift in Sources */,
 				BD0E65E528BA240B00AD1AC8 /* PlaceModels.swift in Sources */,
 				BD0E65E328BA23BC00AD1AC8 /* PhotoItem.swift in Sources */,
-				BD0E65D528BA21B600AD1AC8 /* MoyaLayer.swift in Sources */,
+				BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */,
+				BD0E65D528BA21B600AD1AC8 /* MoyaService.swift in Sources */,
 				BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */,
 				BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */,
 				BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */,

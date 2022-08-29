@@ -20,6 +20,12 @@ struct Circle: Decodable {
    let radius: Int
 }
 
+//struct Center: Decodable {
+//  let latitude: Double
+//  let longitude: Double
+//}
+
+
 /*
 "context": {
     "geo_bounds": {
@@ -33,3 +39,4 @@ struct Circle: Decodable {
     }
 }
 */
+
