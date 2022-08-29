@@ -23,24 +23,37 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="Uzq-yK-LN5">
-                        <rect key="frame" x="10" y="5" width="236" height="64"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="15" y="5" width="231" height="49"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                         <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-Df-Egz">
+                        <rect key="frame" x="15" y="54" width="231" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="8wW-sl-yjM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="4yW-1N-qMv" secondAttribute="trailing" constant="5" id="GXp-UO-j6g"/>
-                    <constraint firstItem="Uzq-yK-LN5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PQb-Nc-6fx"/>
                     <constraint firstAttribute="bottom" secondItem="4yW-1N-qMv" secondAttribute="bottom" constant="5" id="Ssv-EM-aL2"/>
+                    <constraint firstItem="4yW-1N-qMv" firstAttribute="leading" secondItem="Uzq-yK-LN5" secondAttribute="trailing" constant="5" id="VF7-Yy-fqu"/>
+                    <constraint firstAttribute="bottom" secondItem="Tn5-Df-Egz" secondAttribute="bottom" constant="5" id="Vk6-IU-a1T"/>
+                    <constraint firstItem="Tn5-Df-Egz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cXE-BN-kX5"/>
+                    <constraint firstItem="Tn5-Df-Egz" firstAttribute="top" secondItem="Uzq-yK-LN5" secondAttribute="bottom" id="e7O-VW-7W8"/>
+                    <constraint firstItem="Uzq-yK-LN5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="eRw-Lh-bmi"/>
                     <constraint firstItem="4yW-1N-qMv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ijY-7x-DYC"/>
-                    <constraint firstItem="Uzq-yK-LN5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kjo-cm-djw"/>
-                    <constraint firstItem="4yW-1N-qMv" firstAttribute="leading" secondItem="Uzq-yK-LN5" secondAttribute="trailing" constant="5" id="tt2-ou-C0X"/>
-                    <constraint firstAttribute="bottom" secondItem="Uzq-yK-LN5" secondAttribute="bottom" constant="5" id="u20-9o-eHf"/>
+                    <constraint firstItem="Uzq-yK-LN5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="lCa-kB-a1H"/>
+                    <constraint firstItem="4yW-1N-qMv" firstAttribute="leading" secondItem="Tn5-Df-Egz" secondAttribute="trailing" constant="5" id="sch-SD-TTx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="categoryNameLAbel" destination="Tn5-Df-Egz" id="kUE-Nz-cUd"/>
                 <outlet property="iconImageView" destination="4yW-1N-qMv" id="8Bx-5r-2IJ"/>
                 <outlet property="nameLabel" destination="Uzq-yK-LN5" id="sZo-tH-Lvw"/>
             </connections>
