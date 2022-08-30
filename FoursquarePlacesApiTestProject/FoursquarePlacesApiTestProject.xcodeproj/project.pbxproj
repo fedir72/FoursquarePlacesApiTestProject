@@ -29,6 +29,7 @@
 		BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */; };
 		BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160FA28BD4857003DF861 /* Extensions.swift */; };
 		BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3722628BD174F005EDD2B /* PhotoViewController.swift */; };
+		BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */; };
 		BDC9145128BCF27A002F6DAD /* MainTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9144F28BCF27A002F6DAD /* MainTBCell.swift */; };
 		BDC9145228BCF27A002F6DAD /* MainTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC9145028BCF27A002F6DAD /* MainTBCell.xib */; };
 		EE4F1DBFFC711F82713B4AF0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */; };
@@ -61,6 +62,7 @@
 		BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCVCell.xib; sourceTree = "<group>"; };
 		BDA160FA28BD4857003DF861 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDA3722628BD174F005EDD2B /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		BDC9144F28BCF27A002F6DAD /* MainTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTBCell.swift; sourceTree = "<group>"; };
 		BDC9145028BCF27A002F6DAD /* MainTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTBCell.xib; sourceTree = "<group>"; };
 		C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; path = "Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				BD0E65C728BA1BE900AD1AC8 /* Info.plist */,
 				BD0E65CE28BA1F3600AD1AC8 /* Application */,
+				BDBA672928BE1E6200AC4878 /* LocationManager */,
 				BD0E65CD28BA1F2300AD1AC8 /* Views */,
 				BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */,
 			);
@@ -221,6 +224,14 @@
 				BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */,
 			);
 			path = PhotoCvCell;
+			sourceTree = "<group>";
+		};
+		BDBA672928BE1E6200AC4878 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		BDC9144D28BCF245002F6DAD /* MainVC */ = {
@@ -377,6 +388,7 @@
 				BDC9145128BCF27A002F6DAD /* MainTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
 				BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */,
+				BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

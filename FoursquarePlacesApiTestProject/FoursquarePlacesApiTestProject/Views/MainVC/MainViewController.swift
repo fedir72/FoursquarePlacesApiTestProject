@@ -7,12 +7,38 @@
 
 import UIKit
 import Moya
+import CoreLocation
 
 class MainViewController: UIViewController {
     
     let fsqProvider = MoyaProvider<FoursquareService>()
     var datasourse = [Place]() {
         didSet { tableview.reloadData() }
+    }
+    
+    var userLocation = CLLocation() {
+        didSet {
+        print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
+            self.fsqProvider.request(.getPlaces(term: "hotel",
+                                                lat: self.userLocation.coordinate.latitude,
+                                                long:self.userLocation.coordinate.longitude,
+                                                radius: 1000,
+                                                limit: 50)) { result in
+                switch result {
+                    
+                case .success(let responce):
+                   // print("Data",String(data: responce.data, encoding: .utf8))
+                    guard let value = self.decodejson(type: Places.self, from: responce.data) else {
+                        print("do not decoded")
+                        return
+                    }
+                    self.datasourse = value.results
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+          }
+        }
+      }
     }
     
     @IBOutlet weak var tableview: UITableView!
@@ -23,26 +49,12 @@ class MainViewController: UIViewController {
          setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Nearest"
-        fsqProvider.request(.getPlaces(term: "stuff",
-                                       lat: 51.509865,
-                                       long: -0.118092,
-                                       radius: 1000,
-                                       limit: 50)) { result in
-            switch result {
-                
-            case .success(let responce):
-               // print("Data",String(data: responce.data, encoding: .utf8))
-                guard let value = self.decodejson(type: Places.self, from: responce.data) else {
-                    print("do not decoded")
-                    return
-                }
-                self.datasourse = value.results
-                
-            case .failure(let error):
-                print(error.localizedDescription)
+        UserLocationManager.shared.getUserLocation { [weak self] location in
+            guard let self = self else { return }
+            self.userLocation = location
+            print("did")
             }
         }
-    }
     
 }
 
