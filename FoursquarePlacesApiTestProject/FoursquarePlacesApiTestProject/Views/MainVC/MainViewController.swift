@@ -11,15 +11,16 @@ import CoreLocation
 
 class MainViewController: UIViewController {
     
-    let fsqProvider = MoyaProvider<FoursquareService>()
+    let fsqProvider = FoursquareProvider()
+    
     var datasourse = [Place]() {
         didSet { tableview.reloadData() }
     }
     
     var userLocation = CLLocation() {
         didSet {
-        print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-            self.fsqProvider.request(.getPlaces(term: "hotel",
+        //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
+            self.fsqProvider.moya.request(.getPlaces(term: "sushi",
                                                 lat: self.userLocation.coordinate.latitude,
                                                 long:self.userLocation.coordinate.longitude,
                                                 radius: 1000,
@@ -28,12 +29,11 @@ class MainViewController: UIViewController {
                     
                 case .success(let responce):
                    // print("Data",String(data: responce.data, encoding: .utf8))
-                    guard let value = self.decodejson(type: Places.self, from: responce.data) else {
+                    guard let value = self.fsqProvider.decodejson(type: Places.self, from: responce.data) else {
                         print("do not decoded")
                         return
                     }
                     self.datasourse = value.results
-                    
                 case .failure(let error):
                     print(error.localizedDescription)
           }
@@ -96,57 +96,20 @@ private extension MainViewController {
         tableview.dataSource = self
     }
     
-    private func decodejson<T:Decodable>(type: T.Type, from: Data?) -> T? {
-        let decoder = JSONDecoder()
-        guard let data = from else { return nil }
-        do {
-            let objects = try decoder.decode(type.self, from: data)
-            return objects
-        } catch let error {
-            print("data has been not decoded : \(error.localizedDescription)")
-            return nil
-        }
-    }
     
     func cellDidTap(id: String,title: String ) {
         let alert = UIAlertController(title: "Atencion", message: "Please make choise", preferredStyle: .alert)
         alert.addAction(.init(title: "Cancel", style: .destructive))
         alert.addAction(.init(title: "Show photos", style: .default) { _ in
-            
-            self.fsqProvider.request(.placePhotos(id: id)) { result in
-                switch result {
-                case .success(let responce):
-                   // print("Data", String(data: responce.data, encoding: .utf8))
-                    if let items = self.decodejson(type: Photos.self, from: responce.data),
-                       items.count > 0
-                    {
-                        print(items.count)
-                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: PhotoViewController.id) as? PhotoViewController {
-                            vc.dataSourse = items
-                            vc.title = title
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                    } else {
-                        self.someWrongAlert("Sorry",
-                                            "but for this place we can not present you any photos, you could be first")
-                    }
-                case .failure(let error):
-                    print(error)
-                }
+        
+            if  let vc = self.storyboard?.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController {
+                vc.fsqId = id
+                vc.title = title
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            
         })
         alert.addAction(.init(title: "Show tips", style: .default) { _ in
-            self.fsqProvider.request(.placeTips(id: id)) { result in
-                switch result {
-                case .success(let responce):
-                    if let items = self.decodejson(type: Tips.self, from: responce.data) {
-                        print(items.count)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
+
             
         })
         present(alert, animated: true)
