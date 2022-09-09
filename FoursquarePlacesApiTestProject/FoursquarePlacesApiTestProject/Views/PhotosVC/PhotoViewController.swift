@@ -115,6 +115,7 @@ extension PhotoViewController: UICollectionViewDataSource {
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = dataSourse[indexPath.item]
+        navigationController?.navigationBar.isHidden = true
         blurView.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.3, delay: 0.1) {
             self.blurView.effect = !self.isBlurred ? UIBlurEffect(style: .systemUltraThinMaterial) : nil
@@ -167,6 +168,7 @@ private extension PhotoViewController {
                 self.isBlurred.toggle()
                 self.blurView.effect = nil
                 self.blurView.isUserInteractionEnabled = false
+                self.navigationController?.navigationBar.isHidden = false
            }
         }
     }
