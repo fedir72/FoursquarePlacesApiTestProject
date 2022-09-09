@@ -130,10 +130,10 @@
 			children = (
 				BD0E65C728BA1BE900AD1AC8 /* Info.plist */,
 				BD0E65CE28BA1F3600AD1AC8 /* Application */,
-				BDA160F928BD4836003DF861 /* Extensions */,
 				BDBA672928BE1E6200AC4878 /* LocationManager */,
-				BD0E65CD28BA1F2300AD1AC8 /* Views */,
 				BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */,
+				BDA160F928BD4836003DF861 /* Extensions */,
+				BD0E65CD28BA1F2300AD1AC8 /* Views */,
 			);
 			path = FoursquarePlacesApiTestProject;
 			sourceTree = "<group>";
