@@ -20,13 +20,16 @@ class PhotoCVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       // backgroundColor = .clear
         layer.cornerRadius = 8
     }
     
-    public func setupCell(photo: PhotoItem) {
-      lazy var plaseholder = UIImage(systemName: "photo.fill")
+    public func setupCell(photo: PhotoItem, width: Int? , height: Int?) {
+        
         dateLabel.text = photo.dateStr()
-        let url = photo.photoUrlStr(w: 300, h: 300)
+        let w = width ?? ( photo.width ?? 600)
+        let h = height ?? ( photo.height ?? 600 )
+        let url = photo.photoUrlStr(w: w, h: h)
         photoImageView.sd_setImage(with: url)
     }
     

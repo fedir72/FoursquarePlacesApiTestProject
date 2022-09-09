@@ -6,42 +6,52 @@
 //
 
 import UIKit
-import SnapKit
 import SDWebImage
+
+private struct Constant {
+    static let itemInRow: CGFloat = 1
+    static let minimumSpacing: CGFloat = 0
+    static let direction: UICollectionView.ScrollDirection = .horizontal
+}
 
 class DetailPhotoViewController: UIViewController {
     
-    var photo: PhotoItem
-    var h: Int
-    var w: Int
+    private var effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
+    private var dataSourse: Photos
+    private var selectedIndexPath: IndexPath
+    
+    private lazy var collection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = Constant.direction
+        layout.minimumLineSpacing = Constant.minimumSpacing
+        layout.minimumInteritemSpacing = Constant.minimumSpacing
+        layout.itemSize = CGSize(width: view.bounds.size.width,
+                                 height: view.bounds.size.height)
+        layout.sectionInset = UIEdgeInsets(top: 1,
+                                           left:1,
+                                           bottom: 1,
+                                           right: 1)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .clear
+        collection.isPagingEnabled = true
+        collection.register(PhotoCVCell.nib, forCellWithReuseIdentifier: PhotoCVCell.id)
+        return collection
+    }()
 
-    private lazy var detailImageView: UIImageView = {
-        let imageview = UIImageView()
-        imageview.contentMode = .scaleAspectFit
-        imageview.clipsToBounds = true
-        return imageview
-    }()
-    
-    private lazy var spiner: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.startAnimating()
-        return indicator
-    }()
-    
     private lazy var tap: UITapGestureRecognizer = {
         let tapgesture = UITapGestureRecognizer(target:self,
                                                 action: #selector(returnToPreviousVC))
         tapgesture.numberOfTouchesRequired = 1
-        tapgesture.numberOfTapsRequired = 1
+        tapgesture.numberOfTapsRequired = 2
         return tapgesture
     }()
     
     
     
-    init(photo: PhotoItem) {
-        self.photo = photo
-        self.h = photo.width ?? 600
-        self.w = photo.height ?? 600
+    init(with datasourse: Photos,selected indexPath: IndexPath) {
+        self.dataSourse = datasourse
+        self.selectedIndexPath = indexPath
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -54,33 +64,74 @@ class DetailPhotoViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+
     
-    private func setupUI() {
-        view.addGestureRecognizer(tap)
-        view.backgroundColor = .clear
-        view.addSubview(spiner)
-        view.addSubview(detailImageView)
-        setupPhoto()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.collection.isPagingEnabled = false
+       // self.collection.scrollToItem(at: self.selectedIndexPath, at: .centeredHorizontally, animated: false)
+        self.collection.selectItem(at: self.selectedIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        self.collection.isPagingEnabled = true
     }
     
-    private func setupPhoto() {
-        let url = photo.photoUrlStr(w: w, h: h)
-        spiner.snp.makeConstraints {
-            $0.center.equalToSuperview()
-           // $0.height.width.equalTo(70)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupConstraints()
+    }
+    
+}
+
+extension DetailPhotoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSourse.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = dataSourse[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCVCell.id,
+                                                           for: indexPath) as? PhotoCVCell else {
+             return UICollectionViewCell()
         }
-        detailImageView.sd_setImage(with: url) { _,_,_,_  in
-            self.spiner.stopAnimating()
-            self.spiner.removeFromSuperview()
-        }
-        detailImageView.snp.makeConstraints {
+        cell.setupCell(photo: item, width: nil, height: nil)
+        return cell
+    }
+}
+
+extension DetailPhotoViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+    }
+}
+
+
+
+
+
+private extension DetailPhotoViewController {
+   
+    func setupUI() {
+        view.addSubview(effectView)
+        effectView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        collection.delegate = self
+        collection.dataSource = self
+        collection.scrollToItem(at: self.selectedIndexPath, at: .top, animated: true)
+        view.backgroundColor = .clear
+        view.addGestureRecognizer(tap)
+        view.addSubview(collection)
     }
     
-   @objc private func returnToPreviousVC() {
-        dismiss(animated: true)
+    func setupConstraints() {
+        collection.frame = view.bounds
     }
     
+   @objc func returnToPreviousVC() {
+       dismiss(animated: true)
+    }
 
 }

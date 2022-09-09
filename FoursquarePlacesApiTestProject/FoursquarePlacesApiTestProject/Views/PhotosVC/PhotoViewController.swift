@@ -11,11 +11,19 @@ import Moya
 import SDWebImage
 
 private struct Constant {
-    static let itemInRow: CGFloat = 2
+    static let itemInRow: CGFloat = 3
     static let minimumSpacing: CGFloat = 1
 }
 
 class PhotoViewController: UIViewController {
+    
+    
+    private var isShowDetail = false {
+        didSet {
+                self.collection.reloadData()
+        }
+    }
+    
     
     static let id = "PhotoViewController"
     private let fsqProvider = FoursquareProvider()
@@ -35,31 +43,7 @@ class PhotoViewController: UIViewController {
         collection.register(PhotoCVCell.nib, forCellWithReuseIdentifier: PhotoCVCell.id)
         return collection
     }()
-    
-    var isBlurred = false
-    private lazy var blurView:UIVisualEffectView = {
-        let view = UIVisualEffectView(effect: nil)
-        view.isUserInteractionEnabled = false
-        return view
-    }()
-    
-    private lazy var detailImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.addGestureRecognizer(tap)
-        imageView.alpha = 0
-        return imageView
-    }()
-    
-    
-    private lazy var tap: UITapGestureRecognizer = {
-        let tapgesture = UITapGestureRecognizer(target:self, action: #selector(hideDetailView))
-        tapgesture.numberOfTouchesRequired = 1
-        tapgesture.numberOfTapsRequired = 1
-        return tapgesture
-    }()
-    
+  
     //MARK: - life cycle
   
     
@@ -88,12 +72,7 @@ class PhotoViewController: UIViewController {
             }
         }
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        detailImageView.center = view.center
-    }
-    
+ 
 }
 
 extension PhotoViewController: UICollectionViewDataSource {
@@ -107,29 +86,23 @@ extension PhotoViewController: UICollectionViewDataSource {
                                                            for: indexPath) as? PhotoCVCell else {
              return UICollectionViewCell()
         }
-        cell.setupCell(photo: item)
+        cell.setupCell(photo: item, width: 300, height: 300)
         return cell
     }
 }
 
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = dataSourse[indexPath.item]
-        blurView.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.3, delay: 0.1) {
-            self.blurView.effect = !self.isBlurred ? UIBlurEffect(style: .systemUltraThinMaterial) : nil
-        }completion: { done in
-            self.isBlurred.toggle()
-            self.showDetailView(with: item)
-        }
- 
+        let vc = DetailPhotoViewController(with: dataSourse, selected: indexPath)
+        present(vc, animated: true)
     }
 }
 
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.size.width
-        let cellWidth = (width - (Constant.minimumSpacing*(Constant.itemInRow+1)))/Constant.itemInRow
+        let calculatedWidth = (width - (Constant.minimumSpacing*(Constant.itemInRow+1)))/Constant.itemInRow
+        let cellWidth = isShowDetail ? width : calculatedWidth
         return .init(width: cellWidth, height: cellWidth)
     }
     
@@ -143,41 +116,18 @@ private extension PhotoViewController {
     }
     
     func setupUI() {
+    navigationItem.rightBarButtonItem =
+        UIBarButtonItem(barButtonSystemItem: .edit,
+                        target: self,
+                        action: #selector(showdetailCollection))
         view.addSubview(collection)
-        view.addSubview(blurView)
-        view.addSubview(detailImageView)
-        
         collection.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        blurView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        detailImageView.frame = .init(x: 0, y: 0, width: 10, height: 10)
-        detailImageView.center = view.center
-    }
-  
-    @objc private func hideDetailView() {
-        UIView.animate(withDuration: 0.3, delay: 0.0) {
-            self.detailImageView.alpha = 0
-            self.detailImageView.frame = .init(x: 0, y: 0, width: 10, height: 10)
-            self.detailImageView.center = self.view.center
-        } completion: { _ in
-            UIView.animate(withDuration: 0.3, delay: 0.0) {
-                self.isBlurred.toggle()
-                self.blurView.effect = nil
-                self.blurView.isUserInteractionEnabled = false
-           }
-        }
     }
     
-    func showDetailView(with item: PhotoItem ) {
-        let photoUrl = item.photoUrlStr(w: item.width ?? 600, h: item.height ?? 600)
-        detailImageView.sd_setImage(with: photoUrl) { _,_,_,_  in
-            UIView.animate(withDuration: 0.3, delay: 0.1) {
-                self.detailImageView.alpha = 1.0
-                self.detailImageView.frame = self.view.bounds
-            }
-        }
+    @objc func showdetailCollection() {
+        self.isShowDetail.toggle()
+        print("toggle")
     }
 }
