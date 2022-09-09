@@ -12,15 +12,13 @@ import CoreLocation
 class MainViewController: UIViewController {
     
     let fsqProvider = FoursquareProvider()
-    
     var datasourse = [Place]() {
         didSet { tableview.reloadData() }
     }
-    
     var userLocation = CLLocation() {
         didSet {
         //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-            self.fsqProvider.moya.request(.getPlaces(term: "sushi",
+            self.fsqProvider.moya.request(.getPlaces(term: "",
                                                 lat: self.userLocation.coordinate.latitude,
                                                 long:self.userLocation.coordinate.longitude,
                                                 radius: 1000,
@@ -55,6 +53,10 @@ class MainViewController: UIViewController {
             print("did")
             }
         }
+    
+    @IBAction func showSettings(_ sender: UIBarButtonItem) {
+    }
+    
     
 }
 

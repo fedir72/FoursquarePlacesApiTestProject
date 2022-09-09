@@ -30,7 +30,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mtZ-UD-wFL" secondAttribute="trailing" id="scK-iV-rWo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xXy-8E-Ggs"/>
+                    <navigationItem key="navigationItem" id="xXy-8E-Ggs">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="sparkle.magnifyingglass" catalog="system" id="ilc-Od-OPR">
+                            <connections>
+                                <action selector="showSettings:" destination="BYZ-38-t0r" id="x27-PK-1Eh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="mtZ-UD-wFL" id="krc-1x-pE3"/>
                     </connections>
@@ -74,6 +80,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="sparkle.magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
