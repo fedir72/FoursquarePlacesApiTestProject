@@ -51,8 +51,10 @@ class PhotoViewController: UIViewController {
       
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.alwaysBounceVertical = true
-      collection.layer.cornerRadius =  8
+        collection.layer.cornerRadius =  8
         collection.register(PhotoCVCell.nib, forCellWithReuseIdentifier: PhotoCVCell.id)
+        collection.delegate = self
+        collection.dataSource = self
         return collection
     }()
     
@@ -85,8 +87,6 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupCollectionView()
         setupUI()
         setupBarButton()
         
@@ -161,20 +161,15 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - private methods
 private extension PhotoViewController {
     
-    func setupCollectionView() {
-        collection.delegate = self
-        collection.dataSource = self
-    }
-    
     func setupUI() {
         view.addSubview(collection)
         view.addSubview(blurView)
         view.addSubview(detailImageView)
         
         collection.snp.makeConstraints {
-            $0.top.equalToSuperview()//.inset(140)
-            $0.left.right.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview().inset(10)
+            $0.top.equalToSuperview()
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         blurView.snp.makeConstraints {

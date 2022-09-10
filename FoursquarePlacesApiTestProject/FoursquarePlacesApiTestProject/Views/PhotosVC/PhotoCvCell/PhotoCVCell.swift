@@ -26,7 +26,7 @@ class PhotoCVCell: UICollectionViewCell {
     public func setupCell(photo: PhotoItem) {
       lazy var plaseholder = UIImage(systemName: "photo.fill")
         dateLabel.text = photo.dateStr()
-        let url = photo.photoUrlStr(w: 300, h: 300)
+        let url = photo.photoUrlStr(w: 400, h: 400)
         photoImageView.sd_setImage(with: url)
     }
     

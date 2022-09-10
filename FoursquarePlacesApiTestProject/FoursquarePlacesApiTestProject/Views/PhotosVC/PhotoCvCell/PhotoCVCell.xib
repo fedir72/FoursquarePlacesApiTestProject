@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="167" height="163"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faP-BY-zTj">
-                        <rect key="frame" x="7" y="138" width="33" height="18"/>
+                        <rect key="frame" x="3" y="142" width="33" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="xP7-KO-UBj"/>
                         </constraints>
@@ -32,12 +32,12 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="faP-BY-zTj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="VM8-qr-3ci"/>
+                <constraint firstItem="faP-BY-zTj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="VM8-qr-3ci"/>
                 <constraint firstAttribute="bottom" secondItem="BhC-vJ-8wz" secondAttribute="bottom" id="X5i-oB-oXj"/>
                 <constraint firstItem="BhC-vJ-8wz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dfe-VU-AAw"/>
                 <constraint firstAttribute="trailing" secondItem="BhC-vJ-8wz" secondAttribute="trailing" id="fuy-Ql-QPH"/>
                 <constraint firstItem="BhC-vJ-8wz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rfQ-rj-VLl"/>
-                <constraint firstAttribute="bottom" secondItem="faP-BY-zTj" secondAttribute="bottom" constant="7" id="xae-nL-mbE"/>
+                <constraint firstAttribute="bottom" secondItem="faP-BY-zTj" secondAttribute="bottom" constant="3" id="xae-nL-mbE"/>
             </constraints>
             <size key="customSize" width="167" height="163"/>
             <connections>
