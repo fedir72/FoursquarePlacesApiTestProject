@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
                              options: .curveEaseIn) {
                   
                   //здвиг homeVC на 100 поинтов
-                  self.navVC?.view.frame.origin.x = ( self.categoryState ? 0 : 200)
+                  self.navVC?.view.frame.origin.x = ( self.categoryState ? 0 : 300)
               } completion: { [weak self] done in
                   self?.categoryState.toggle()
           }
