@@ -298,19 +298,19 @@
 		BDC9144D28BCF245002F6DAD /* SearchVC */ = {
 			isa = PBXGroup;
 			children = (
-				BDC9144E28BCF24F002F6DAD /* TableviewCell */,
+				BDC9144E28BCF24F002F6DAD /* MainTBCell */,
 				BD0E65BD28BA1BE600AD1AC8 /* SearchViewController.swift */,
 			);
 			path = SearchVC;
 			sourceTree = "<group>";
 		};
-		BDC9144E28BCF24F002F6DAD /* TableviewCell */ = {
+		BDC9144E28BCF24F002F6DAD /* MainTBCell */ = {
 			isa = PBXGroup;
 			children = (
 				BDC9144F28BCF27A002F6DAD /* MainTBCell.swift */,
 				BDC9145028BCF27A002F6DAD /* MainTBCell.xib */,
 			);
-			path = TableviewCell;
+			path = MainTBCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

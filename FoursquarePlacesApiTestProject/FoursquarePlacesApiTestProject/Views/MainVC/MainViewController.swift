@@ -17,7 +17,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addChildVC()
     }
     
@@ -28,6 +27,7 @@ class MainViewController: UIViewController {
         didMove(toParent: self)
         
         searchVC.delegate = self
+        categoryVC.delegate = searchVC
         let navVC = UINavigationController(rootViewController: searchVC)
         addChild(navVC)
         view.addSubview(navVC.view)

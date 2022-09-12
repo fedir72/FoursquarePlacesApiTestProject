@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
     var userLocation = CLLocation() {
         didSet {
         //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-            self.fsqProvider.moya.request(.getPlaces(term: "entertainment",
+            self.fsqProvider.moya.request(.getPlaces(term: "market",
                                                 lat: self.userLocation.coordinate.latitude,
                                                 long:self.userLocation.coordinate.longitude,
                                                 radius: 1000,
@@ -53,6 +53,7 @@ class SearchViewController: UIViewController {
     
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar(frame: .null)
+        search.delegate = self
         search.layer.opacity = 0.2
         search.layer.cornerRadius = 13
         search.placeholder = "enter search term"
@@ -112,6 +113,10 @@ extension SearchViewController: UITableViewDelegate {
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isShowedSearchbar.toggle()
+        print(#function)
+    }
     
 }
 
@@ -125,6 +130,7 @@ private extension SearchViewController {
     }
     
     @objc  func showSearchBar() {
+        navigationItem.leftBarButtonItem?.isEnabled.toggle()
         isShowedSearchbar.toggle()
     }
     
@@ -147,7 +153,7 @@ private extension SearchViewController {
                         initialSpringVelocity: 0.3) {
             self.searchBar.layer.opacity = (self.isShowedSearchbar ? 1 : 0.2)
             
-            self.placesTableView.layer.cornerRadius = (self.isShowedSearchbar ? 20 : 0)
+            self.placesTableView.layer.cornerRadius = (self.isShowedSearchbar ? 13 : 0)
             self.placesTableView.isUserInteractionEnabled.toggle()
             self.placesTableView.layer.opacity = (self.isShowedSearchbar ? 0.2 : 1)
             
@@ -173,7 +179,7 @@ private extension SearchViewController {
         
         view.backgroundColor = UIColor(named: "MyTint")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(
-            systemName: "list.bullet"),
+            systemName: "list.bullet.circle.fill"),
             style: .plain,
             target: self,
             action: #selector(showSettings))
@@ -191,12 +197,10 @@ private extension SearchViewController {
         let alert = UIAlertController(title: "Atencion", message: "Please make choise", preferredStyle: .alert)
         alert.addAction(.init(title: "Cancel", style: .destructive))
         alert.addAction(.init(title: "Show photos", style: .default) { _ in
-        print("vc")
               let vc =  PhotoViewController()
                 vc.fsqId = id
                 vc.title = title
                 self.navigationController?.pushViewController(vc, animated: true)
-            
         })
         alert.addAction(.init(title: "Show tips", style: .default) { _ in
 
@@ -205,4 +209,14 @@ private extension SearchViewController {
         present(alert, animated: true)
     }
  
+}
+
+extension SearchViewController: CategoryViewControllerDelegate {
+    
+    func searchPlaces(_ from: AnyObject, by category: String) {
+        print(category)
+        delegate?.didSlideCategoryMenu()
+        self.placesTableView.isUserInteractionEnabled = true
+    }
+    
 }

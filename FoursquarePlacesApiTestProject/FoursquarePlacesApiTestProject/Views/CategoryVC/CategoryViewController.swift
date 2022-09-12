@@ -8,8 +8,15 @@
 import UIKit
 import SnapKit
 
+protocol CategoryViewControllerDelegate: AnyObject {
+    
+    func searchPlaces(_ from: AnyObject ,by category: String)
+    
+}
+
 class CategoryViewController: UIViewController {
     
+    weak var delegate: CategoryViewControllerDelegate?
     var categories = [String]()
     
     enum Category: String, CaseIterable {
@@ -24,10 +31,6 @@ class CategoryViewController: UIViewController {
         case retail
         case sportsAndRecreation
         case travelAndTransportation
-        
-        
-        
-        
         
         var imageName: String {
             switch self {
@@ -121,6 +124,8 @@ class CategoryViewController: UIViewController {
             $0.top.equalTo(categoryLabel.snp.bottom).inset(10)
         }
     }
+    
+
 }
 
 //MARK: - UICollectionViewDataSource
@@ -150,7 +155,9 @@ extension CategoryViewController: UITableViewDataSource {
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         categorytableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
+        //print(indexPath.row)
+        let ind = String(Category.allCases[indexPath.row].searchIndex)
+        self.delegate?.searchPlaces(self, by: ind)
     }
 }
 
