@@ -23,7 +23,6 @@ class MainViewController: UIViewController {
     
     
     private func addChildVC() {
-        
         addChild(categoryVC)
         view.addSubview(categoryVC.view)
         didMove(toParent: self)
@@ -34,7 +33,6 @@ class MainViewController: UIViewController {
         view.addSubview(navVC.view)
         didMove(toParent: self)
         self.navVC = navVC
-        
     }
     
     func toogleMenu(completion: (() -> Void)?) {
@@ -45,7 +43,7 @@ class MainViewController: UIViewController {
                              initialSpringVelocity: 0.2,
                              options: .curveEaseIn) {
                   
-                  //здвиг homeVC на 100 поинтов
+                  
                   self.navVC?.view.frame.origin.x = ( self.categoryState ? 0 : 300)
               } completion: { [weak self] done in
                   self?.categoryState.toggle()
@@ -59,6 +57,4 @@ extension MainViewController: SearchViewControllerDelegate {
             print("menu togle")
         }
     }
-    
-    
 }

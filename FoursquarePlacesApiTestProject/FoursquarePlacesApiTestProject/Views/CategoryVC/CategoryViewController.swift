@@ -120,10 +120,7 @@ class CategoryViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(30)
             $0.top.equalTo(categoryLabel.snp.bottom).inset(10)
         }
-        
     }
-
-  
 }
 
 //MARK: - UICollectionViewDataSource

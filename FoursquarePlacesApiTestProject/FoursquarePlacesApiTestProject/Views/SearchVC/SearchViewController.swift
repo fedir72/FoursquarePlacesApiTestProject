@@ -19,11 +19,9 @@ class SearchViewController: UIViewController {
     
     weak var delegate: SearchViewControllerDelegate?
     let fsqProvider = FoursquareProvider()
-    var isSlidedTable = false {
-        didSet {
-            print(isSlidedTable)
-    
-        }
+
+    var isShowedSearchbar = false {
+        didSet { slideTableview() }
     }
     var datasourse = [Place]() {
         didSet { placesTableView.reloadData() }
@@ -52,6 +50,15 @@ class SearchViewController: UIViewController {
         }
       }
     }
+    
+    private lazy var searchBar: UISearchBar = {
+        let search = UISearchBar(frame: .null)
+        search.layer.opacity = 0.2
+        search.layer.cornerRadius = 13
+        search.placeholder = "enter search term"
+        search.clipsToBounds = true
+        return search
+    }()
  
     private lazy var placesTableView: UITableView = {
         let table = UITableView()
@@ -63,7 +70,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         setupTableView()
+         setupUI()
          setupVC()
          UserLocationManager.shared.getUserLocation { [weak self] location in
             guard let self = self else { return }
@@ -71,11 +78,8 @@ class SearchViewController: UIViewController {
             }
          }
     
-    @objc  func showSettings() {
-        placesTableView.isUserInteractionEnabled.toggle()
-        //placesTableView.alpha = 0.1
-        delegate?.didSlideCategoryMenu()
-    }  
+   
+    
 }
 
 //MARK: - UITableViewDatasource
@@ -107,21 +111,77 @@ extension SearchViewController: UITableViewDelegate {
  }
 }
 
+extension SearchViewController: UISearchBarDelegate {
+    
+}
+
 
 private extension SearchViewController {
     
-    func setupTableView() {
+    @objc  func showSettings() {
+        placesTableView.isUserInteractionEnabled.toggle()
+        //placesTableView.alpha = 0.1
+        delegate?.didSlideCategoryMenu()
+    }
+    
+    @objc  func showSearchBar() {
+        isShowedSearchbar.toggle()
+    }
+    
+    func slideTableview() {
+        
+        placesTableView.snp.updateConstraints {
+            $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 200 : 0 )
+            $0.left.right.equalToSuperview().inset(self.isShowedSearchbar ? 10 : 0)
+            $0.bottom.equalToSuperview().inset(self.isShowedSearchbar ? 60 : 0)
+        }
+        searchBar.snp.updateConstraints {
+            $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 140 : 60 )
+            $0.left.right.equalToSuperview().inset(self.isShowedSearchbar ? 10 : 60)
+        }
+        
+        
+        UIView.animate(withDuration: 0.3,
+                        delay: 0.05,
+                        usingSpringWithDamping: 0.7,
+                        initialSpringVelocity: 0.3) {
+            self.searchBar.layer.opacity = (self.isShowedSearchbar ? 1 : 0.2)
+            
+            self.placesTableView.layer.cornerRadius = (self.isShowedSearchbar ? 20 : 0)
+            self.placesTableView.isUserInteractionEnabled.toggle()
+            self.placesTableView.layer.opacity = (self.isShowedSearchbar ? 0.2 : 1)
+            
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    
+    func setupUI() {
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(60)
+            $0.left.right.equalToSuperview().inset(60)
+            $0.height.equalTo(50)
+        }
         view.addSubview(placesTableView)
         placesTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.left.right.top.bottom.equalToSuperview()
         }
     }
     
     func setupVC() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"),
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(showSettings))
+        
+        view.backgroundColor = UIColor(named: "MyTint")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(
+            systemName: "list.bullet"),
+            style: .plain,
+            target: self,
+            action: #selector(showSettings))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(
+            systemName: "magnifyingglass.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(showSearchBar))
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Nearest"
     }
