@@ -1,4 +1,4 @@
-//
+//// A delay function
 //  SearchViewController.swift
 //  FoursquarePlacesApiTestProject
 //
@@ -10,6 +10,9 @@ import Moya
 import CoreLocation
 import SnapKit
 
+func delay(seconds: Double, completion: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
+}
 
 protocol SearchViewControllerDelegate: AnyObject {
     func didSlideCategoryMenu()
@@ -20,6 +23,9 @@ class SearchViewController: UIViewController {
     weak var delegate: SearchViewControllerDelegate?
     let fsqProvider = FoursquareProvider()
 
+    var searchCategory: String? {
+        didSet {  print("category",searchCategory!) }
+    }
     var isShowedSearchbar = false {
         didSet { slideTableview() }
     }
@@ -30,24 +36,7 @@ class SearchViewController: UIViewController {
     var userLocation = CLLocation() {
         didSet {
         //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-            self.fsqProvider.moya.request(.getPlaces(term: "market",
-                                                lat: self.userLocation.coordinate.latitude,
-                                                long:self.userLocation.coordinate.longitude,
-                                                radius: 1000,
-                                                limit: 50)) { result in
-                switch result {
-                    
-                case .success(let responce):
-                   // print("Data",String(data: responce.data, encoding: .utf8))
-                    guard let value = self.fsqProvider.decodejson(type: Places.self, from: responce.data) else {
-                        print("do not decoded")
-                        return
-                    }
-                    self.datasourse = value.results
-                case .failure(let error):
-                    print(error.localizedDescription)
-          }
-        }
+            self.getDataForDatasource(term: nil, category: nil)
       }
     }
     
@@ -69,6 +58,7 @@ class SearchViewController: UIViewController {
         return table
     }()
     
+    //MARK: - lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
          setupUI()
@@ -78,9 +68,7 @@ class SearchViewController: UIViewController {
             self.userLocation = location
             }
          }
-    
-   
-    
+
 }
 
 //MARK: - UITableViewDatasource
@@ -112,20 +100,10 @@ extension SearchViewController: UITableViewDelegate {
  }
 }
 
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        isShowedSearchbar.toggle()
-        print(#function)
-    }
-    
-}
-
-
 private extension SearchViewController {
     
     @objc  func showSettings() {
         placesTableView.isUserInteractionEnabled.toggle()
-        //placesTableView.alpha = 0.1
         delegate?.didSlideCategoryMenu()
     }
     
@@ -135,7 +113,6 @@ private extension SearchViewController {
     }
     
     func slideTableview() {
-        
         placesTableView.snp.updateConstraints {
             $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 200 : 0 )
             $0.left.right.equalToSuperview().inset(self.isShowedSearchbar ? 10 : 0)
@@ -145,18 +122,14 @@ private extension SearchViewController {
             $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 140 : 60 )
             $0.left.right.equalToSuperview().inset(self.isShowedSearchbar ? 10 : 60)
         }
-        
-        
         UIView.animate(withDuration: 0.3,
                         delay: 0.05,
                         usingSpringWithDamping: 0.7,
                         initialSpringVelocity: 0.3) {
             self.searchBar.layer.opacity = (self.isShowedSearchbar ? 1 : 0.2)
-            
             self.placesTableView.layer.cornerRadius = (self.isShowedSearchbar ? 13 : 0)
             self.placesTableView.isUserInteractionEnabled.toggle()
             self.placesTableView.layer.opacity = (self.isShowedSearchbar ? 0.2 : 1)
-            
             self.view.layoutIfNeeded()
         }
     }
@@ -176,8 +149,10 @@ private extension SearchViewController {
     }
     
     func setupVC() {
-        
         view.backgroundColor = UIColor(named: "MyTint")
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Nearest"
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(
             systemName: "list.bullet.circle.fill"),
             style: .plain,
@@ -188,8 +163,6 @@ private extension SearchViewController {
             style: .plain,
             target: self,
             action: #selector(showSearchBar))
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Nearest"
     }
     
     
@@ -208,15 +181,55 @@ private extension SearchViewController {
         })
         present(alert, animated: true)
     }
- 
+    
+    func getDataForDatasource(term: String?,category index: String? ) {
+        self.fsqProvider.moya.request(
+            .getPlaces(term: term ?? "",
+                lat: self.userLocation.coordinate.latitude,
+                long:self.userLocation.coordinate.longitude,
+                radius: 1000,
+                limit: 50)) { result in
+                switch result {
+                    case .success(let responce):
+                        guard let value = self.fsqProvider.decodejson(type: Places.self, from: responce.data) else {
+                            return
+                        }
+                        self.datasourse = value.results
+                        if term == nil, index == nil {
+                            delay(seconds: 1) {
+                                self.someWrongAlert("Now you see all kind of places",
+                                            """
+                                            if you wanna see more precise result
+                                            pleace enter searching term
+                                            or choise place category
+                                            """)}
+                        }
+                    case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
 }
 
+//MARK: - CategoryViewControllerDelegate
 extension SearchViewController: CategoryViewControllerDelegate {
     
     func searchPlaces(_ from: AnyObject, by category: String) {
         print(category)
-        delegate?.didSlideCategoryMenu()
         self.placesTableView.isUserInteractionEnabled = true
+        delegate?.didSlideCategoryMenu()
+        self.getDataForDatasource(term: nil, category: category)
+    }
+    
+}
+
+//MARK: - UISearchBarDelegate
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let txt = searchBar.text, txt.isEmpty == false  else { return }
+        searchBar.text = nil
+        isShowedSearchbar.toggle()
+        navigationItem.leftBarButtonItem?.isEnabled = true
+        self.getDataForDatasource(term: txt, category: nil)
     }
     
 }
