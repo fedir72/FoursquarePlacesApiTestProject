@@ -29,6 +29,8 @@ class MainViewController: UIViewController {
         searchVC.delegate = self
         categoryVC.delegate = searchVC
         let navVC = UINavigationController(rootViewController: searchVC)
+       // navVC.navigationBar.isTranslucent = true
+        navVC.navigationItem.titleView?.isOpaque = true
         addChild(navVC)
         view.addSubview(navVC.view)
         didMove(toParent: self)

@@ -19,7 +19,7 @@ let somekey = "fsq3Tl7FUUXvL0+OQj4iQLnCepvCUOjR6Vzxhp3QZjknmj8="
 //https://api.foursquare.com/v3/places/541327ea498ee067d851a158/tips
 
 enum FoursquareService {
-    case getPlaces(term: String,lat: Double,long: Double, radius: Int, limit: Int)
+    case getPlaces(term: String,category: String,lat: Double,long: Double, radius: Int, limit: Int)
     case getNearbyPlaces(term: String,lat: Double,long: Double, radius: Int, limit: Int)
     case placeIDetails(id: String)
     case placePhotos(id: String)
@@ -35,7 +35,7 @@ extension FoursquareService: TargetType {
     var path: String {
         switch self {
             
-        case .getPlaces(_,_,_,_,_):
+        case .getPlaces(_,_,_,_,_,_):
             return "search"
         case .getNearbyPlaces(_,_,_,_,_):
             return "nearby"
@@ -54,9 +54,10 @@ extension FoursquareService: TargetType {
     
     var task: Task {
         switch self {
-        case .getPlaces(let term, let lat, let long, let radius, let limit):
+        case .getPlaces(let term, let category ,let lat, let long, let radius, let limit):
             return .requestParameters(parameters: [
                 "query": term,
+                "categories": category,
                 "ll": "\(lat),\(long)",
                 "radius": radius,
                 "limit":limit], encoding: URLEncoding.default)

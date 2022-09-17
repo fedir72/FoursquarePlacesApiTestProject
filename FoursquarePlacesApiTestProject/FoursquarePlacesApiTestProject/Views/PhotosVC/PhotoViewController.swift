@@ -103,7 +103,7 @@ class PhotoViewController: UIViewController {
                                           but for this place we
                                           can not present you any photos,
                                           you could be first
-                                          """)
+                                          """) { }
                 }
             case .failure(let error):
                 print(error)
@@ -214,7 +214,7 @@ private extension PhotoViewController {
     
     func menu() -> UIMenu {
         let menu = UIMenu(title: "choise the size of photos",
-                      options: [.displayInline,.singleSelection],
+                      options: [.displayInline],
                       children: [
                         UIAction(title: "small (X4)") { _ in
                             self.itemInRow = 4},

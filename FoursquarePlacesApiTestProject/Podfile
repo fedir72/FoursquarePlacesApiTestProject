@@ -6,8 +6,8 @@ target 'FoursquarePlacesApiTestProject' do
   use_frameworks!
 
   # Pods for FoursquarePlacesApiTestProject
-   pod 'Moya'
    pod 'SDWebImage'
    pod 'SnapKit'
+   pod 'Moya'
 
 end

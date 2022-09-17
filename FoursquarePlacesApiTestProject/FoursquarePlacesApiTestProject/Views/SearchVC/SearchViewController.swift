@@ -10,29 +10,20 @@ import Moya
 import CoreLocation
 import SnapKit
 
-func delay(seconds: Double, completion: @escaping () -> Void) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
-}
-
 protocol SearchViewControllerDelegate: AnyObject {
     func didSlideCategoryMenu()
 }
 
 class SearchViewController: UIViewController {
-    
     weak var delegate: SearchViewControllerDelegate?
     let fsqProvider = FoursquareProvider()
-
-    var searchCategory: String? {
-        didSet {  print("category",searchCategory!) }
-    }
+    
     var isShowedSearchbar = false {
         didSet { slideTableview() }
     }
     var datasourse = [Place]() {
         didSet { placesTableView.reloadData() }
     }
-    
     var userLocation = CLLocation() {
         didSet {
         //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
@@ -52,7 +43,7 @@ class SearchViewController: UIViewController {
  
     private lazy var placesTableView: UITableView = {
         let table = UITableView()
-        table.register(MainTBCell.nib(), forCellReuseIdentifier: MainTBCell.id)
+        table.register(SearchTBCell.nib(), forCellReuseIdentifier: SearchTBCell.id)
         table.delegate = self
         table.dataSource = self
         return table
@@ -61,6 +52,7 @@ class SearchViewController: UIViewController {
     //MARK: - lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backButtonDisplayMode = .minimal
          setupUI()
          setupVC()
          UserLocationManager.shared.getUserLocation { [weak self] location in
@@ -68,7 +60,6 @@ class SearchViewController: UIViewController {
             self.userLocation = location
             }
          }
-
 }
 
 //MARK: - UITableViewDatasource
@@ -79,7 +70,7 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let place = datasourse[indexPath.row]
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTBCell.id, for: indexPath) as? MainTBCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTBCell.id, for: indexPath) as? SearchTBCell else {
                 return UITableViewCell()
             }
             cell.setupCell(with: place)
@@ -154,15 +145,31 @@ private extension SearchViewController {
         title = "Nearest"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(
-            systemName: "list.bullet.circle.fill"),
+            systemName: "list.bullet"),
             style: .plain,
             target: self,
             action: #selector(showSettings))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(
-            systemName: "magnifyingglass.circle.fill"),
+    }
+    
+    func setupRightBarButtons() {
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(
+            systemName: "magnifyingglass"),
             style: .plain,
             target: self,
-            action: #selector(showSearchBar))
+            action: #selector(showSearchBar)),
+        UIBarButtonItem(
+            image: UIImage(systemName:"globe"),
+            style: .plain,
+            target: self,
+            action: #selector(showMap)) ]
+    }
+    
+    @objc func showMap() {
+        let vc = MapViewController(location: self.userLocation,
+                                   places: self.datasourse,
+                                   termText: self.title ?? "")
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -184,7 +191,8 @@ private extension SearchViewController {
     
     func getDataForDatasource(term: String?,category index: String? ) {
         self.fsqProvider.moya.request(
-            .getPlaces(term: term ?? "",
+         .getPlaces(term: term ?? "",
+                category: index ?? "",
                 lat: self.userLocation.coordinate.latitude,
                 long:self.userLocation.coordinate.longitude,
                 radius: 1000,
@@ -196,13 +204,17 @@ private extension SearchViewController {
                         }
                         self.datasourse = value.results
                         if term == nil, index == nil {
-                            delay(seconds: 1) {
+                            delay(seconds: 0.5) {
                                 self.someWrongAlert("Now you see all kind of places",
                                             """
                                             if you wanna see more precise result
                                             pleace enter searching term
                                             or choise place category
-                                            """)}
+                                            """) { [weak self] in
+                                    self?.setupRightBarButtons()
+                                }
+
+                            }
                         }
                     case .failure(let error): print(error.localizedDescription)
             }
@@ -213,9 +225,10 @@ private extension SearchViewController {
 //MARK: - CategoryViewControllerDelegate
 extension SearchViewController: CategoryViewControllerDelegate {
     
-    func searchPlaces(_ from: AnyObject, by category: String) {
+    func searchPlaces(_ from: AnyObject, by category: String, titletext: String) {
         print(category)
         self.placesTableView.isUserInteractionEnabled = true
+        self.title = titletext
         delegate?.didSlideCategoryMenu()
         self.getDataForDatasource(term: nil, category: category)
     }
@@ -229,6 +242,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = nil
         isShowedSearchbar.toggle()
         navigationItem.leftBarButtonItem?.isEnabled = true
+        self.title = txt.capitalized
         self.getDataForDatasource(term: txt, category: nil)
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0D1BD428D1E01F00C512BD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D1BD328D1E01F00C512BD /* MapViewController.swift */; };
 		BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */; };
 		BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */; };
 		BD0E65BE28BA1BE600AD1AC8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65BD28BA1BE600AD1AC8 /* SearchViewController.swift */; };
@@ -25,10 +26,12 @@
 		BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E628BA247200AD1AC8 /* ContextModels.swift */; };
 		BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */; };
 		BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6203A128BB77C400DE8905 /* TipsModels.swift */; };
+		BD9C6A5628CF9DFF00012921 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C6A5528CF9DFF00012921 /* Categories.swift */; };
 		BDA160F728BD30B1003DF861 /* PhotoCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160F528BD30B1003DF861 /* PhotoCVCell.swift */; };
 		BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */; };
 		BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160FA28BD4857003DF861 /* Extensions.swift */; };
 		BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3722628BD174F005EDD2B /* PhotoViewController.swift */; };
+		BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */; };
 		BDADAB9528CC9ECE007A59A4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */; };
 		BDADAB9928CCA520007A59A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9828CCA520007A59A4 /* MainViewController.swift */; };
 		BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */; };
@@ -37,14 +40,16 @@
 		BDB4620528BE5F8000D9FB4E /* FoursquareProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */; };
 		BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */; };
 		BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */; };
-		BDC9145128BCF27A002F6DAD /* MainTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9144F28BCF27A002F6DAD /* MainTBCell.swift */; };
-		BDC9145228BCF27A002F6DAD /* MainTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC9145028BCF27A002F6DAD /* MainTBCell.xib */; };
+		BDC10DCD28D5C5A4003881C1 /* PlacePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */; };
+		BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */; };
+		BDC9145228BCF27A002F6DAD /* SearchTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC9145028BCF27A002F6DAD /* SearchTBCell.xib */; };
 		EE4F1DBFFC711F82713B4AF0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		568BE2585C74938EFA91D0AD /* Pods-FoursquarePlacesApiTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquarePlacesApiTestProject.release.xcconfig"; path = "Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject.release.xcconfig"; sourceTree = "<group>"; };
 		6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoursquarePlacesApiTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD0D1BD328D1E01F00C512BD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BD0E65B628BA1BE600AD1AC8 /* FoursquarePlacesApiTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquarePlacesApiTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,10 +70,12 @@
 		BD0E65E628BA247200AD1AC8 /* ContextModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModels.swift; sourceTree = "<group>"; };
 		BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesAndNearbyModels.swift; sourceTree = "<group>"; };
 		BD6203A128BB77C400DE8905 /* TipsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModels.swift; sourceTree = "<group>"; };
+		BD9C6A5528CF9DFF00012921 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		BDA160F528BD30B1003DF861 /* PhotoCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCVCell.swift; sourceTree = "<group>"; };
 		BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCVCell.xib; sourceTree = "<group>"; };
 		BDA160FA28BD4857003DF861 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDA3722628BD174F005EDD2B /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMapPin.swift; sourceTree = "<group>"; };
 		BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		BDADAB9828CCA520007A59A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTipsViewController.swift; sourceTree = "<group>"; };
@@ -77,8 +84,9 @@
 		BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareProvider.swift; sourceTree = "<group>"; };
 		BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
-		BDC9144F28BCF27A002F6DAD /* MainTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTBCell.swift; sourceTree = "<group>"; };
-		BDC9145028BCF27A002F6DAD /* MainTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTBCell.xib; sourceTree = "<group>"; };
+		BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePinView.swift; sourceTree = "<group>"; };
+		BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTBCell.swift; sourceTree = "<group>"; };
+		BDC9145028BCF27A002F6DAD /* SearchTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTBCell.xib; sourceTree = "<group>"; };
 		C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; path = "Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +117,16 @@
 				6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD0D1BD228D1DFE800C512BD /* MapVC */ = {
+			isa = PBXGroup;
+			children = (
+				BD0D1BD328D1E01F00C512BD /* MapViewController.swift */,
+				BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */,
+				BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */,
+			);
+			path = MapVC;
 			sourceTree = "<group>";
 		};
 		BD0E65AD28BA1BE600AD1AC8 = {
@@ -148,6 +166,7 @@
 				BDADAB9628CCA4FD007A59A4 /* MainVC */,
 				BDADAB9328CC9E92007A59A4 /* CategoryVC */,
 				BDC9144D28BCF245002F6DAD /* SearchVC */,
+				BD0D1BD228D1DFE800C512BD /* MapVC */,
 				BDB4620628BE6CF000D9FB4E /* DetailphotoVC */,
 				BDA3722528BD1723005EDD2B /* PhotosVC */,
 				BDB461FC28BE5A0400D9FB4E /* UserTipsVC */,
@@ -249,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */,
+				BD9C6A5528CF9DFF00012921 /* Categories.swift */,
 			);
 			path = CategoryVC;
 			sourceTree = "<group>";
@@ -307,8 +327,8 @@
 		BDC9144E28BCF24F002F6DAD /* MainTBCell */ = {
 			isa = PBXGroup;
 			children = (
-				BDC9144F28BCF27A002F6DAD /* MainTBCell.swift */,
-				BDC9145028BCF27A002F6DAD /* MainTBCell.xib */,
+				BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */,
+				BDC9145028BCF27A002F6DAD /* SearchTBCell.xib */,
 			);
 			path = MainTBCell;
 			sourceTree = "<group>";
@@ -379,7 +399,7 @@
 				BD0E65C328BA1BE900AD1AC8 /* Assets.xcassets in Resources */,
 				BD0E65D928BA22A200AD1AC8 /* Places.json in Resources */,
 				BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */,
-				BDC9145228BCF27A002F6DAD /* MainTBCell.xib in Resources */,
+				BDC9145228BCF27A002F6DAD /* SearchTBCell.xib in Resources */,
 				BD0E65DF28BA230600AD1AC8 /* Error.json in Resources */,
 				BD0E65C128BA1BE600AD1AC8 /* Main.storyboard in Resources */,
 				BD0E65E128BA232000AD1AC8 /* Tips.json in Resources */,
@@ -448,15 +468,19 @@
 				BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */,
 				BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */,
 				BD0E65D528BA21B600AD1AC8 /* MoyaService.swift in Sources */,
+				BD0D1BD428D1E01F00C512BD /* MapViewController.swift in Sources */,
+				BDC10DCD28D5C5A4003881C1 /* PlacePinView.swift in Sources */,
 				BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */,
 				BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */,
 				BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */,
 				BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */,
-				BDC9145128BCF27A002F6DAD /* MainTBCell.swift in Sources */,
+				BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
 				BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */,
 				BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */,
 				BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */,
+				BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */,
+				BD9C6A5628CF9DFF00012921 /* Categories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +636,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -621,7 +646,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -641,6 +666,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -650,7 +676,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -664,7 +690,7 @@
 				BD0E65C928BA1BE900AD1AC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		BD0E65CA28BA1BE900AD1AC8 /* Build configuration list for PBXNativeTarget "FoursquarePlacesApiTestProject" */ = {
 			isa = XCConfigurationList;
@@ -673,7 +699,7 @@
 				BD0E65CC28BA1BE900AD1AC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

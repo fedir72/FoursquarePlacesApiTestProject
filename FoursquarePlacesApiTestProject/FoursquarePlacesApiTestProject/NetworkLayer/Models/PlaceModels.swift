@@ -12,15 +12,11 @@ struct Place: Decodable {
     let timezone: String?
     }
 
-
-
 struct Location: Decodable {
    let country: String
    let cross_street: String?
    let formatted_address: String?
 }
-
-
 
 struct Category: Decodable {
       let  id: Int
@@ -29,13 +25,10 @@ struct Category: Decodable {
 }
 
 struct Icon: Decodable {
-    
        let   prefix: String
        let   suffix: String
-    
-    
-    
-    //32, 44, 64, 88, or 120//
+  
+    //32, 44, 64, 88, or 120
     enum IconResolution: String {
         case micro = "32"
         case small = "44"
@@ -50,10 +43,6 @@ struct Icon: Decodable {
         return URL(string: str)
     }
 }
-
-
-
-
 
 struct Main: Decodable {
     let main: GeoPoint?

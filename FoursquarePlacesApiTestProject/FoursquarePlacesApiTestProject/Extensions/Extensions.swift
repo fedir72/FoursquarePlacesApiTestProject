@@ -9,11 +9,16 @@ import UIKit
 
 extension UIViewController {
     
-     func someWrongAlert(_ title: String ,_ message: String) {
+    func someWrongAlert(_ title: String ,_ message: String, completion:@escaping (() -> Void)) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: "cancel", style: .destructive, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
+        let action = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+            completion()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true)
+     }
+}
+
+func delay(seconds: Double, completion: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
 }

@@ -8,18 +8,17 @@
 import UIKit
 import SDWebImage
 
-class MainTBCell: UITableViewCell {
+class SearchTBCell: UITableViewCell {
     
-    static let id = "MainTBCell"
+    static let id = "SearchTBCell"
     static func nib() -> UINib {
-        return UINib(nibName: Self.id,
-                     bundle: nil)
+        return UINib(nibName: Self.id,bundle: nil)
     }
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var categoryNameLAbel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.layer.cornerRadius = 8

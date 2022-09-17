@@ -20,11 +20,6 @@ struct Circle: Decodable {
    let radius: Int
 }
 
-//struct Center: Decodable {
-//  let latitude: Double
-//  let longitude: Double
-//}
-
 
 /*
 "context": {
