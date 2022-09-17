@@ -102,8 +102,13 @@ extension MapViewController: MKMapViewDelegate {
       place.mapItem?.openInMaps(launchOptions: launchOptions)
     }
     
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//      let view =  mapView.dequeueReusableAnnotationView(
+//        withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier,
+//        for: annotation ) as! PlacePinView
+//        return view
+//    }
     
-
 }
 
 private extension MKMapView {

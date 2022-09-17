@@ -21,7 +21,7 @@ class PlaceMapPin: NSObject, MKAnnotation {
     }
     
     var markerTintColor: UIColor  {
-        return .green
+        return .blue
     }
   
     init(place: Place ) {
