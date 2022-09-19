@@ -58,6 +58,7 @@ class PhotoViewController: UIViewController {
         return collection
     }()
     
+    /*
     private lazy var blurView:UIVisualEffectView = {
         let view = UIVisualEffectView(effect: nil)
         view.isUserInteractionEnabled = false
@@ -72,7 +73,7 @@ class PhotoViewController: UIViewController {
         imageView.alpha = 0
         return imageView
     }()
-    
+    */
     
     
     private lazy var tap: UITapGestureRecognizer = {
@@ -113,7 +114,7 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        detailImageView.center = view.center
+       // detailImageView.center = view.center
     }
     
 }
@@ -137,15 +138,22 @@ extension PhotoViewController: UICollectionViewDataSource {
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = dataSourse[indexPath.item]
-        navigationController?.navigationBar.isHidden = true
-        blurView.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.2, delay: 0.05) {
-            self.blurView.effect = !self.isBlurred ? UIBlurEffect(style: .systemUltraThinMaterial) : nil
-        }completion: { done in
-            self.isBlurred.toggle()
-            self.showDetailView(with: item)
-        }
- 
+        guard let w = item.width,
+              let h = item.height,
+              let url = item.photoUrlStr(w: w, h: h) else { return }
+        let vc = DetailPhotoViewController(photoUrl: url)
+       // vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+        
+       // navigationController?.navigationBar.isHidden = true
+       // blurView.isUserInteractionEnabled = true
+//        UIView.animate(withDuration: 0.2, delay: 0.05) {
+//            self.blurView.effect = !self.isBlurred ? UIBlurEffect(style: .systemUltraThinMaterial) : nil
+//        }completion: { done in
+//            self.isBlurred.toggle()
+//            self.showDetailView(with: item)
+//        }
+//
     }
 }
 
@@ -163,8 +171,8 @@ private extension PhotoViewController {
     
     func setupUI() {
         view.addSubview(collection)
-        view.addSubview(blurView)
-        view.addSubview(detailImageView)
+        //view.addSubview(blurView)
+       // view.addSubview(detailImageView)
         
         collection.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -172,50 +180,53 @@ private extension PhotoViewController {
             $0.bottom.equalToSuperview()
         }
         
-        blurView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        detailImageView.frame = .init(x: 0, y: 0, width: 10, height: 10)
-        detailImageView.center = view.center
+//        blurView.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//        }
+//        detailImageView.frame = .init(x: 0, y: 0, width: 10, height: 10)
+//        detailImageView.center = view.center
     }
   
     @objc private func hideDetailView() {
         UIView.animate(withDuration: 0.15, delay: 0.0) {
-            self.detailImageView.alpha = 0
-            self.detailImageView.frame = .init(x: 0, y: 0, width: 10, height: 10)
-            self.detailImageView.center = self.view.center
+//            self.detailImageView.alpha = 0
+//            self.detailImageView.frame = .init(x: 0, y: 0, width: 10, height: 10)
+//            self.detailImageView.center = self.view.center
         } completion: { _ in
             UIView.animate(withDuration: 0.15, delay: 0.0) {
-                self.isBlurred.toggle()
-                self.blurView.effect = nil
-                self.blurView.isUserInteractionEnabled = false
-                self.navigationController?.navigationBar.isHidden = false
+//                self.isBlurred.toggle()
+//                self.blurView.effect = nil
+//                self.blurView.isUserInteractionEnabled = false
+//                self.navigationController?.navigationBar.isHidden = false
            }
         }
     }
-    
+
     func showDetailView(with item: PhotoItem ) {
         let photoUrl = item.photoUrlStr(w: item.width ?? 600, h: item.height ?? 600)
-        detailImageView.sd_setImage(with: photoUrl) { _,_,_,_  in
-            UIView.animate(withDuration: 0.15, delay: 0.0) {
-                self.detailImageView.alpha = 1.0
-                self.detailImageView.frame = self.view.bounds
-            }
-        }
+//        detailImageView.sd_setImage(with: photoUrl) { _,_,_,_  in
+//            UIView.animate(withDuration: 0.15, delay: 0.0) {
+//                self.detailImageView.alpha = 1.0
+//                self.detailImageView.frame = self.view.bounds
+//            }
+//        }
     }
     
     func setupBarButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil,
-                                                            image: UIImage(systemName: "eyeglasses"),
-                                                            primaryAction: nil,
-                                                            menu: self.menu())
-          
+        navigationItem.rightBarButtonItem =
+        UIBarButtonItem(
+            title: nil,
+            image: UIImage(systemName: "eyeglasses"),
+            primaryAction: nil,
+            menu: self.menu()
+            )
     }
     
     func menu() -> UIMenu {
-        let menu = UIMenu(title: "choise the size of photos",
-                      options: [.displayInline],
-                      children: [
+        let menu = UIMenu(
+            title: "choise the size of photos",
+            options: [.displayInline],
+            children: [
                         UIAction(title: "small (X4)") { _ in
                             self.itemInRow = 4},
                         UIAction(title: "medium (X3)") { _ in

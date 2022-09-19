@@ -25,8 +25,10 @@
 		BD0E65E528BA240B00AD1AC8 /* PlaceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E428BA240B00AD1AC8 /* PlaceModels.swift */; };
 		BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E628BA247200AD1AC8 /* ContextModels.swift */; };
 		BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */; };
+		BD28E92628D856700054EE22 /* autumn.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BD28E92528D856700054EE22 /* autumn.jpeg */; };
 		BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6203A128BB77C400DE8905 /* TipsModels.swift */; };
 		BD9C6A5628CF9DFF00012921 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C6A5528CF9DFF00012921 /* Categories.swift */; };
+		BD9C764428D7680B006431DA /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C764328D7680B006431DA /* ImageScrollView.swift */; };
 		BDA160F728BD30B1003DF861 /* PhotoCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160F528BD30B1003DF861 /* PhotoCVCell.swift */; };
 		BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */; };
 		BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160FA28BD4857003DF861 /* Extensions.swift */; };
@@ -69,8 +71,10 @@
 		BD0E65E428BA240B00AD1AC8 /* PlaceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModels.swift; sourceTree = "<group>"; };
 		BD0E65E628BA247200AD1AC8 /* ContextModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModels.swift; sourceTree = "<group>"; };
 		BD0E65E928BA250300AD1AC8 /* placesAndNearbyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesAndNearbyModels.swift; sourceTree = "<group>"; };
+		BD28E92528D856700054EE22 /* autumn.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = autumn.jpeg; sourceTree = "<group>"; };
 		BD6203A128BB77C400DE8905 /* TipsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModels.swift; sourceTree = "<group>"; };
 		BD9C6A5528CF9DFF00012921 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		BD9C764328D7680B006431DA /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		BDA160F528BD30B1003DF861 /* PhotoCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCVCell.swift; sourceTree = "<group>"; };
 		BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCVCell.xib; sourceTree = "<group>"; };
 		BDA160FA28BD4857003DF861 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -122,9 +126,8 @@
 		BD0D1BD228D1DFE800C512BD /* MapVC */ = {
 			isa = PBXGroup;
 			children = (
+				BDD84E6428D740F300E20615 /* MapKitViews */,
 				BD0D1BD328D1E01F00C512BD /* MapViewController.swift */,
-				BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */,
-				BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */,
 			);
 			path = MapVC;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				BD0E65C728BA1BE900AD1AC8 /* Info.plist */,
+				BD28E92528D856700054EE22 /* autumn.jpeg */,
 				BD0E65CE28BA1F3600AD1AC8 /* Application */,
 				BDA160F928BD4836003DF861 /* Extensions */,
 				BDBA672928BE1E6200AC4878 /* LocationManager */,
@@ -167,8 +171,8 @@
 				BDADAB9328CC9E92007A59A4 /* CategoryVC */,
 				BDC9144D28BCF245002F6DAD /* SearchVC */,
 				BD0D1BD228D1DFE800C512BD /* MapVC */,
-				BDB4620628BE6CF000D9FB4E /* DetailphotoVC */,
 				BDA3722528BD1723005EDD2B /* PhotosVC */,
+				BDB4620628BE6CF000D9FB4E /* DetailphotoVC */,
 				BDB461FC28BE5A0400D9FB4E /* UserTipsVC */,
 			);
 			path = Views;
@@ -303,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */,
+				BD9C764328D7680B006431DA /* ImageScrollView.swift */,
 			);
 			path = DetailphotoVC;
 			sourceTree = "<group>";
@@ -331,6 +336,15 @@
 				BDC9145028BCF27A002F6DAD /* SearchTBCell.xib */,
 			);
 			path = MainTBCell;
+			sourceTree = "<group>";
+		};
+		BDD84E6428D740F300E20615 /* MapKitViews */ = {
+			isa = PBXGroup;
+			children = (
+				BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */,
+				BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */,
+			);
+			path = MapKitViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD0E65DD28BA22E000AD1AC8 /* Photos.json in Resources */,
+				BD28E92628D856700054EE22 /* autumn.jpeg in Resources */,
 				BD0E65C628BA1BE900AD1AC8 /* LaunchScreen.storyboard in Resources */,
 				BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */,
 				BD0E65C328BA1BE900AD1AC8 /* Assets.xcassets in Resources */,
@@ -474,6 +489,7 @@
 				BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */,
 				BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */,
 				BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */,
+				BD9C764428D7680B006431DA /* ImageScrollView.swift in Sources */,
 				BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
 				BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */,

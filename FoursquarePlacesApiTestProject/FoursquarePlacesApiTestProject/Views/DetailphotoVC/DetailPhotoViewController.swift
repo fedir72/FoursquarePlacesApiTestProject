@@ -11,37 +11,11 @@ import SDWebImage
 
 class DetailPhotoViewController: UIViewController {
     
-    var photo: PhotoItem
-    var h: Int
-    var w: Int
-
-    private lazy var detailImageView: UIImageView = {
-        let imageview = UIImageView()
-        imageview.contentMode = .scaleAspectFit
-        imageview.clipsToBounds = true
-        return imageview
-    }()
+    var photoUrl: URL?
+    var imageScrollView: ImageScrollView!
     
-    private lazy var spiner: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.startAnimating()
-        return indicator
-    }()
-    
-    private lazy var tap: UITapGestureRecognizer = {
-        let tapgesture = UITapGestureRecognizer(target:self,
-                                                action: #selector(returnToPreviousVC))
-        tapgesture.numberOfTouchesRequired = 1
-        tapgesture.numberOfTapsRequired = 1
-        return tapgesture
-    }()
-    
-    
-    
-    init(photo: PhotoItem) {
-        self.photo = photo
-        self.h = photo.width ?? 600
-        self.w = photo.height ?? 600
+    init(photoUrl: URL) {
+        self.photoUrl = photoUrl
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,35 +23,27 @@ class DetailPhotoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
+        print(photoUrl)
+        imageScrollView = ImageScrollView(frame: view.bounds)
+        view.addSubview(imageScrollView)
+                imageScrollView.snp.makeConstraints {
+                    $0.edges.equalToSuperview()
+                }
+        let imagePath = Bundle.main.path(forResource: "autumn", ofType: "jpeg")!
+        let img = UIImage(contentsOfFile: imagePath)!
+
+        imageScrollView.set(image: img)
     }
-    
-    
-    private func setupUI() {
-        view.addGestureRecognizer(tap)
-        view.backgroundColor = .clear
-        view.addSubview(spiner)
-        view.addSubview(detailImageView)
-        setupPhoto()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      //  imageScrollView.setImage(by: photoUrl)
     }
-    
-    private func setupPhoto() {
-        let url = photo.photoUrlStr(w: w, h: h)
-        spiner.snp.makeConstraints {
-            $0.center.equalToSuperview()
-           // $0.height.width.equalTo(70)
-        }
-        detailImageView.sd_setImage(with: url) { _,_,_,_  in
-            self.spiner.stopAnimating()
-            self.spiner.removeFromSuperview()
-        }
-        detailImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-    
+ 
+   
    @objc private func returnToPreviousVC() {
         dismiss(animated: true)
     }
