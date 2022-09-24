@@ -11,13 +11,23 @@ import Moya
 import SDWebImage
 
 private struct Constant {
-    static var itemInRow: CGFloat = 2
     static let minimumSpacing: CGFloat = 1
 }
 
 class PhotoViewController: UIViewController {
+    
+    private enum CellSize {
+        case small
+        case medium
+        case large
+        case xlarge
+    }
 
     static let id = "PhotoViewController"
+    
+    private var cellSize: CellSize? {
+        didSet { setupItemInRow() }
+    }
     private var itemInRow: CGFloat = 2 {
         didSet {
             UIView.animate(withDuration: 0.3, delay: 0.0) {
@@ -76,6 +86,33 @@ class PhotoViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+      setupItemInRow()
+    }
+    
+    func setupItemInRow() {
+        if view.bounds.width < view.bounds.height {
+            switch cellSize {
+            case .small: itemInRow = 4
+            case .medium: itemInRow = 3
+            case .large: itemInRow = 2
+            case .xlarge: itemInRow = 1
+            case .none:
+                break
+            }
+        } else {
+            switch cellSize {
+            case .small: itemInRow = 8
+            case .medium: itemInRow = 6
+            case .large: itemInRow = 4
+            case .xlarge: itemInRow = 2
+            case .none:
+                break
             }
         }
     }
@@ -153,16 +190,16 @@ private extension PhotoViewController {
             options: [.displayInline],
             children: [
                         UIAction(title: "small (X4)") { _ in
-                            self.itemInRow = 4
+                            self.cellSize = .small
                         },
                         UIAction(title: "medium (X3)") { _ in
-                            self.itemInRow = 3
+                            self.cellSize = .medium
                         },
                         UIAction(title: "large (X2)") { _ in
-                            self.itemInRow = 2
+                            self.cellSize = .large
                         },
                         UIAction(title: "X.large (X1)") { _ in
-                            self.itemInRow = 1
+                            self.cellSize = .xlarge
                         }
                       ])
         
