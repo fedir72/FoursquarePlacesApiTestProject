@@ -20,7 +20,7 @@ class DetailPhotoViewController: UIViewController {
         let blurview = UIVisualEffectView(effect: nil)
         return blurview
     }()
-    
+
     //MARK: - later: to try hand over url to controller and fetch image here
     init(photoUrl: URL) {
         self.photoUrl = photoUrl
@@ -72,5 +72,8 @@ class DetailPhotoViewController: UIViewController {
         }
     }
     
-    
+    @objc private func closeTap() {
+      dismiss(animated: true)
+    }
+
 }

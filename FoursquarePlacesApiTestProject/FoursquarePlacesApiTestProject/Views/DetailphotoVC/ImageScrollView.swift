@@ -12,11 +12,14 @@ class ImageScrollView: UIScrollView {
     
   private  var imageZoomView: UIImageView!
     
-  private lazy var zoomTap: UITapGestureRecognizer = {
+  private lazy var zoomTapGesture: UITapGestureRecognizer = {
         let z = UITapGestureRecognizer(target: self, action: #selector(handleZoomingTap))
         z.numberOfTapsRequired = 2
         return z
     }()
+    
+   
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +54,7 @@ class ImageScrollView: UIScrollView {
         self.contentSize = imageSize
         setMinMaxZoomScale()
         self.zoomScale = self.minimumZoomScale//при запуске
-        self.imageZoomView.addGestureRecognizer(self.zoomTap)
+        self.imageZoomView.addGestureRecognizer(self.zoomTapGesture)
         self.imageZoomView.isUserInteractionEnabled =  true
     }
     

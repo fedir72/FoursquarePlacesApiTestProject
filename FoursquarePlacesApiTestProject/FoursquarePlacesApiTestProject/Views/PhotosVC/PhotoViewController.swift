@@ -12,24 +12,27 @@ import SDWebImage
 
 private struct Constant {
     static let minimumSpacing: CGFloat = 1
+    static let numberOfcellsInRow = "numberOfcellsInRow"
 }
 
 class PhotoViewController: UIViewController {
     
-    private enum CellSize {
+    enum CellSize {
         case small
         case medium
         case large
         case xlarge
     }
-
-    static let id = "PhotoViewController"
     
-    private var cellSize: CellSize? {
+    static let id = "PhotoViewController"
+    let userdefault = UserDefaults.standard
+    private lazy var cellSize: CellSize = self.getDataFromUserdefauils() {
         didSet { setupItemInRow() }
     }
-    private var itemInRow: CGFloat = 2 {
+    
+    private lazy var itemInRow: CGFloat = 3 {
         didSet {
+            userdefault.set(Int(itemInRow), forKey: Constant.numberOfcellsInRow)
             UIView.animate(withDuration: 0.3, delay: 0.0) {
                 self.collection.reloadData()
                 self.collection.scrollsToTop = true
@@ -43,15 +46,15 @@ class PhotoViewController: UIViewController {
             self.collection.reloadData()
         }
     }
- 
-  //MARK: - UI objects
-  private lazy var collection: UICollectionView = {
+    
+    //MARK: - UI objects
+    private lazy var collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Constant.minimumSpacing
         layout.minimumInteritemSpacing = Constant.minimumSpacing
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 0, right: 1)
-      
+        
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.alwaysBounceVertical = true
         collection.layer.cornerRadius =  8
@@ -70,7 +73,7 @@ class PhotoViewController: UIViewController {
         self.fsqProvider.moya.request(.placePhotos(id: self.fsqId)) { result in
             switch result {
             case .success(let responce):
-               // print("Data", String(data: responce.data, encoding: .utf8))
+                // print("Data", String(data: responce.data, encoding: .utf8))
                 if let items = self.fsqProvider.decodejson(type: Photos.self, from: responce.data),
                    items.count > 0 {
                     self.dataSourse = items
@@ -92,7 +95,7 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      setupItemInRow()
+        setupItemInRow()
     }
     
     func setupItemInRow() {
@@ -102,8 +105,6 @@ class PhotoViewController: UIViewController {
             case .medium: itemInRow = 3
             case .large: itemInRow = 2
             case .xlarge: itemInRow = 1
-            case .none:
-                break
             }
         } else {
             switch cellSize {
@@ -111,14 +112,21 @@ class PhotoViewController: UIViewController {
             case .medium: itemInRow = 6
             case .large: itemInRow = 4
             case .xlarge: itemInRow = 2
-            case .none:
-                break
             }
         }
+        
     }
-
+    
+    func getDataFromUserdefauils() -> CellSize {
+    let number = userdefault.integer(forKey: Constant.numberOfcellsInRow)
+        switch number {
+        case 1: return .xlarge
+        case 2: return .large
+        case 3: return .medium
+        default: return .small
+        }
+    }
 }
-
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
           numberOfItemsInSection section: Int) -> Int {
