@@ -28,7 +28,6 @@ class PhotoViewController: UIViewController {
     }
     private let fsqProvider = FoursquareProvider()
     var fsqId = ""
-    
     private var dataSourse = [PhotoItem]() {
         didSet {
             self.collection.reloadData()
@@ -71,7 +70,9 @@ class PhotoViewController: UIViewController {
                                           but for this place we
                                           can not present you any photos,
                                           you could be first
-                                          """) { }
+                                          """) { [weak self] in
+                        self?.navigationController?.popViewController(animated: true)
+                    }
                 }
             case .failure(let error):
                 print(error)
@@ -91,10 +92,10 @@ extension PhotoViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath)
                         -> UICollectionViewCell {
         let item = dataSourse[indexPath.item]
-        guard let cell = collectionView.dequeueReusableCell(
+      guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: PhotoCVCell.id,
             for: indexPath) as? PhotoCVCell else {
-             return UICollectionViewCell()
+          return UICollectionViewCell()
         }
         cell.setupCell(photo: item)
         return cell
@@ -110,8 +111,8 @@ extension PhotoViewController: UICollectionViewDelegate {
         let imgv = UIImageView()
         imgv.sd_setImage(with: url) {_,_,_,_ in
             guard let image = imgv.image else {return}
+            //MARK: - show detail photo
             let vc = DetailPhotoViewController(image: image)
-
             self.present(vc, animated: true)
         }
     }
@@ -123,12 +124,10 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = (width - (Constant.minimumSpacing*(itemInRow+1)))/itemInRow
         return .init(width: cellWidth, height: cellWidth)
     }
-    
 }
 
 //MARK: - private methods
 private extension PhotoViewController {
-    
     func setupUI() {
         view.addSubview(collection)
         collection.snp.makeConstraints {
@@ -137,9 +136,7 @@ private extension PhotoViewController {
             $0.bottom.equalToSuperview()
         }
     }
-  
-
-    
+ 
     func setupBarButton() {
         navigationItem.rightBarButtonItem =
         UIBarButtonItem(
@@ -156,7 +153,8 @@ private extension PhotoViewController {
             options: [.displayInline],
             children: [
                         UIAction(title: "small (X4)") { _ in
-                            self.itemInRow = 4},
+                            self.itemInRow = 4
+                        },
                         UIAction(title: "medium (X3)") { _ in
                             self.itemInRow = 3
                         },

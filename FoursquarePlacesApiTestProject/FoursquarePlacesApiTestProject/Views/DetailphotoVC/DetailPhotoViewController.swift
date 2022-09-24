@@ -14,7 +14,12 @@ class DetailPhotoViewController: UIViewController {
     //var photoUrl: URL?
     private var image: UIImage?
     private var photoUrl: URL?
+    
     var imageScrollView: ImageScrollView!
+    private let blurView: UIVisualEffectView = {
+        let blurview = UIVisualEffectView(effect: nil)
+        return blurview
+    }()
     
     //MARK: - later: to try hand over url to controller and fetch image here
     init(photoUrl: URL) {
@@ -33,12 +38,39 @@ class DetailPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(blurView)
+        blurView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         imageScrollView = ImageScrollView(frame: view.bounds)
         view.addSubview(imageScrollView)
         imageScrollView.set(image: image!)
         imageScrollView.snp.makeConstraints {
-                    $0.edges.equalToSuperview()
-                }
+            $0.edges.equalToSuperview()
+        }
+        imageScrollView.alpha = 0.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showScrollView()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(#function)
+    }
+    deinit {
+        print(#function)
     }
  
+    func showScrollView() {
+        UIView.animate(withDuration: 0.15, delay: 0.0) {
+            self.blurView.effect = UIBlurEffect(style: .regular)
+        }
+        UIView.animate(withDuration: 0.15, delay: 0.15) {
+            self.imageScrollView.alpha = 1.0
+        }
+    }
+    
+    
 }
