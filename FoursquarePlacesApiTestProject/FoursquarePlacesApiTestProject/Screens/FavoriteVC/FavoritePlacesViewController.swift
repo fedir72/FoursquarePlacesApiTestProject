@@ -1,13 +1,13 @@
 //
-//  UserTipsViewController.swift
+//  FavoritePlacesViewController.swift
 //  FoursquarePlacesApiTestProject
 //
-//  Created by Fedii Ihor on 30.08.2022.
+//  Created by Fedii Ihor on 03.11.2022.
 //
 
 import UIKit
 
-class UserTipsViewController: UIViewController {
+class FavoritePlacesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

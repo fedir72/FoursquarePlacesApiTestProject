@@ -26,6 +26,19 @@ class PhotoViewController: UIViewController {
     
     static let id = "PhotoViewController"
     let userdefault = UserDefaults.standard
+    private let fsqProvider = FoursquareProvider()
+    var fsqId = ""
+    
+    
+    var isShowedTipsTableview = false {
+        didSet {
+            switch isShowedTipsTableview {
+            case true: self.showTipsTableView()
+            case false: self.closeTipsTableView()
+            }
+        }
+    }
+    //MARK: - handle collectionview
     private lazy var cellSize: CellSize = self.getDataFromUserdefauils() {
         didSet { setupItemInRow() }
     }
@@ -33,14 +46,9 @@ class PhotoViewController: UIViewController {
     private lazy var itemInRow: CGFloat = 3 {
         didSet {
             userdefault.set(Int(itemInRow), forKey: Constant.numberOfcellsInRow)
-            UIView.animate(withDuration: 0.3, delay: 0.0) {
-                self.collection.reloadData()
-                self.collection.scrollsToTop = true
-            }
+            self.collection.reloadData()
         }
     }
-    private let fsqProvider = FoursquareProvider()
-    var fsqId = ""
     private var dataSourse = [PhotoItem]() {
         didSet {
             self.collection.reloadData()
@@ -63,6 +71,8 @@ class PhotoViewController: UIViewController {
         collection.dataSource = self
         return collection
     }()
+    
+    private var tipsTable: UITableView?
     
     //MARK: - life cycle
     override func viewDidLoad() {
@@ -114,7 +124,6 @@ class PhotoViewController: UIViewController {
             case .xlarge: itemInRow = 2
             }
         }
-        
     }
     
     func getDataFromUserdefauils() -> CellSize {
@@ -126,7 +135,10 @@ class PhotoViewController: UIViewController {
         default: return .small
         }
     }
+ 
 }
+
+
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
           numberOfItemsInSection section: Int) -> Int {
@@ -173,25 +185,84 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - private methods
 private extension PhotoViewController {
+    
     func setupUI() {
+        view.backgroundColor = .systemBackground
         view.addSubview(collection)
         collection.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.top.bottom.left.right.equalToSuperview()
         }
     }
  
     func setupBarButton() {
-        navigationItem.rightBarButtonItem =
+        navigationItem.rightBarButtonItems = [
         UIBarButtonItem(
             title: nil,
             image: UIImage(systemName: "eyeglasses"),
             primaryAction: nil,
-            menu: self.menu()
-            )
+            menu: self.menu()),
+        UIBarButtonItem(image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis"),
+                        style: .done,
+                        target: self,
+                        action: #selector(showTips))
+        ]
     }
     
+    func setupTipsTable() {
+        self.tipsTable = UITableView(frame: .zero, style: .grouped)
+        view.addSubview(tipsTable!)
+        tipsTable?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tipsTable?.layer.cornerRadius = 20
+        tipsTable?.layer.opacity = 0.01
+        tipsTable?.rowHeight = 40
+        tipsTable?.dataSource = self
+        tipsTable?.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview().inset(10)
+            $0.height.equalToSuperview().multipliedBy(0.6)
+        }
+    }
+    func deleletable() {
+        tipsTable?.removeFromSuperview()
+        tipsTable = nil
+    }
+    
+    @objc func showTips() {
+        self.isShowedTipsTableview.toggle()
+    }
+    
+    func showTipsTableView() {
+        self.setupTipsTable()
+        self.collection.isUserInteractionEnabled = (self.isShowedTipsTableview ? false : true)
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.1,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.3){
+            self.collection.layer.opacity = (self.isShowedTipsTableview ? 0.2 : 1.0)
+        }
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.3){
+            self.tipsTable?.layer.opacity = 1.0
+        }
+    }
+    
+    func closeTipsTableView() {
+        self.tipsTable?.isUserInteractionEnabled = false
+        self.collection.isUserInteractionEnabled = true
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.05,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.3){
+            self.tipsTable?.layer.opacity = 0.01
+        } completion: { _ in
+            self.deleletable()
+        }
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.3,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.3){
+            self.collection.layer.opacity = 1.0
+        }
+    }
     func menu() -> UIMenu {
         let menu = UIMenu(
             title: "choise the size of photos",
@@ -213,4 +284,23 @@ private extension PhotoViewController {
         
         return menu
     }
+}
+
+extension PhotoViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tipsTable?.dequeueReusableCell(withIdentifier: "cell") else {
+            return UITableViewCell()
+        }
+        cell.textLabel?.text = "Text \(indexPath.row)"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Customers tips"
+    }
+    
 }
