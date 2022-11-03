@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530FCD89759A61534F57E7C0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */; };
 		BD0D1BD428D1E01F00C512BD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D1BD328D1E01F00C512BD /* MapViewController.swift */; };
 		BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */; };
 		BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */; };
@@ -33,6 +34,7 @@
 		BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */; };
 		BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160FA28BD4857003DF861 /* Extensions.swift */; };
 		BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3722628BD174F005EDD2B /* PhotoViewController.swift */; };
+		BDA6015C2914026C00869330 /* FavoritePlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */; };
 		BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */; };
 		BDADAB9528CC9ECE007A59A4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */; };
 		BDADAB9928CCA520007A59A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9828CCA520007A59A4 /* MainViewController.swift */; };
@@ -45,7 +47,6 @@
 		BDC10DCD28D5C5A4003881C1 /* PlacePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */; };
 		BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */; };
 		BDC9145228BCF27A002F6DAD /* SearchTBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC9145028BCF27A002F6DAD /* SearchTBCell.xib */; };
-		EE4F1DBFFC711F82713B4AF0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCVCell.xib; sourceTree = "<group>"; };
 		BDA160FA28BD4857003DF861 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BDA3722628BD174F005EDD2B /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewController.swift; sourceTree = "<group>"; };
 		BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMapPin.swift; sourceTree = "<group>"; };
 		BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		BDADAB9828CCA520007A59A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4F1DBFFC711F82713B4AF0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */,
+				530FCD89759A61534F57E7C0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,16 +160,17 @@
 				BD0E65CE28BA1F3600AD1AC8 /* Application */,
 				BDA160F928BD4836003DF861 /* Extensions */,
 				BDBA672928BE1E6200AC4878 /* LocationManager */,
-				BD0E65CD28BA1F2300AD1AC8 /* Views */,
+				BD0E65CD28BA1F2300AD1AC8 /* Screens */,
 				BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */,
 			);
 			path = FoursquarePlacesApiTestProject;
 			sourceTree = "<group>";
 		};
-		BD0E65CD28BA1F2300AD1AC8 /* Views */ = {
+		BD0E65CD28BA1F2300AD1AC8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				BDADAB9628CCA4FD007A59A4 /* MainVC */,
+				BDA6015A2914020900869330 /* FavoriteVC */,
 				BDADAB9328CC9E92007A59A4 /* CategoryVC */,
 				BDC9144D28BCF245002F6DAD /* SearchVC */,
 				BD0D1BD228D1DFE800C512BD /* MapVC */,
@@ -175,7 +178,7 @@
 				BDB4620628BE6CF000D9FB4E /* DetailphotoVC */,
 				BDB461FC28BE5A0400D9FB4E /* UserTipsVC */,
 			);
-			path = Views;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		BD0E65CE28BA1F3600AD1AC8 /* Application */ = {
@@ -266,6 +269,14 @@
 				BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */,
 			);
 			path = PhotoCvCell;
+			sourceTree = "<group>";
+		};
+		BDA6015A2914020900869330 /* FavoriteVC */ = {
+			isa = PBXGroup;
+			children = (
+				BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */,
+			);
+			path = FavoriteVC;
 			sourceTree = "<group>";
 		};
 		BDADAB9328CC9E92007A59A4 /* CategoryVC */ = {
@@ -490,6 +501,7 @@
 				BDA160FB28BD4857003DF861 /* Extensions.swift in Sources */,
 				BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */,
 				BD9C764428D7680B006431DA /* ImageScrollView.swift in Sources */,
+				BDA6015C2914026C00869330 /* FavoritePlacesViewController.swift in Sources */,
 				BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
 				BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b00-Yr-zQm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -19,6 +19,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" selectedImage="mappin.and.ellipse" systemItem="search" id="6Yh-4p-WbM"/>
                     <navigationItem key="navigationItem" id="xXy-8E-Ggs">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="sparkle.magnifyingglass" catalog="system" id="ilc-Od-OPR">
                             <connections>
@@ -29,11 +30,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="84"/>
+            <point key="canvasLocation" x="2707" y="645"/>
+        </scene>
+        <!--Favorite Places View Controller-->
+        <scene sceneID="0S8-aw-yAM">
+            <objects>
+                <viewController id="h6k-Tt-tCz" customClass="FavoritePlacesViewController" customModule="FoursquarePlacesApiTestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleAspectFit" id="3F9-EP-BQz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="XCX-fL-BSN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Ziw-lR-9BT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A77-0w-dfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3554" y="645"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="GG0-Fe-kws">
+            <objects>
+                <tabBarController id="b00-Yr-zQm" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="siQ-Fw-2vf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="fYL-ee-Wt9"/>
+                        <segue destination="h6k-Tt-tCz" kind="relationship" relationship="viewControllers" id="SEh-uH-JHh"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LGt-ZV-mMD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3094" y="-141"/>
         </scene>
     </scenes>
     <resources>
+        <image name="mappin.and.ellipse" width="128" height="128"/>
         <image name="sparkle.magnifyingglass" catalog="system" width="128" height="117"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
