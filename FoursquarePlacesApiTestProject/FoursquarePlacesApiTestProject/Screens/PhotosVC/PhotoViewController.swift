@@ -11,7 +11,7 @@ import Moya
 import SDWebImage
 
 private struct Constant {
-    static let minimumSpacing: CGFloat = 1
+    static let minimumSpacing: CGFloat = 3
     static let numberOfcellsInRow = "numberOfcellsInRow"
 }
 
@@ -61,7 +61,10 @@ class PhotoViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Constant.minimumSpacing
         layout.minimumInteritemSpacing = Constant.minimumSpacing
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 0, right: 1)
+        layout.sectionInset = UIEdgeInsets(top: 0,
+                                           left: Constant.minimumSpacing,
+                                           bottom: Constant.minimumSpacing,
+                                           right: Constant.minimumSpacing)
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.alwaysBounceVertical = true

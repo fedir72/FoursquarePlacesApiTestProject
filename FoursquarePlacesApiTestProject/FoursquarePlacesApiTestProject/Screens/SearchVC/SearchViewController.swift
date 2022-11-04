@@ -34,7 +34,7 @@ class SearchViewController: UIViewController {
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar(frame: .null)
         search.delegate = self
-        search.layer.opacity = 0.2
+        search.layer.opacity = 0
         search.layer.cornerRadius = 13
         search.placeholder = "enter search term"
         search.clipsToBounds = true
@@ -105,19 +105,19 @@ private extension SearchViewController {
     
     func slideTableview() {
         placesTableView.snp.updateConstraints {
-            $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 200 : 0 )
+            $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 200 : 150 )
             $0.left.right.equalToSuperview().inset(self.isShowedSearchbar ? 10 : 0)
             $0.bottom.equalToSuperview().inset(self.isShowedSearchbar ? 60 : 0)
         }
         searchBar.snp.updateConstraints {
-            $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 140 : 60 )
+            $0.top.equalToSuperview().inset(self.isShowedSearchbar ? 140 : 20 )
             $0.left.right.equalToSuperview().inset(self.isShowedSearchbar ? 10 : 60)
         }
         UIView.animate(withDuration: 0.3,
                         delay: 0.05,
                         usingSpringWithDamping: 0.7,
                         initialSpringVelocity: 0.3) {
-            self.searchBar.layer.opacity = (self.isShowedSearchbar ? 1 : 0.2)
+            self.searchBar.layer.opacity = (self.isShowedSearchbar ? 1 : 0)
             self.placesTableView.layer.cornerRadius = (self.isShowedSearchbar ? 13 : 0)
             self.placesTableView.isUserInteractionEnabled.toggle()
             self.placesTableView.layer.opacity = (self.isShowedSearchbar ? 0.2 : 1)
@@ -135,11 +135,13 @@ private extension SearchViewController {
         }
         view.addSubview(placesTableView)
         placesTableView.snp.makeConstraints {
-            $0.left.right.top.bottom.equalToSuperview()
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(150)
         }
     }
     
     func setupVC() {
+        navigationItem.titleView?.tintColor = .white
         view.backgroundColor = UIColor(named: "MyTint")
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Nearest"
