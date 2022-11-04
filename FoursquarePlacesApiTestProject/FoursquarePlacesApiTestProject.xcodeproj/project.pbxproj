@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		530FCD89759A61534F57E7C0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */; };
 		BD0D1BD428D1E01F00C512BD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D1BD328D1E01F00C512BD /* MapViewController.swift */; };
 		BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */; };
 		BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */; };
@@ -43,6 +42,13 @@
 		BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */; };
 		BDB4620528BE5F8000D9FB4E /* FoursquareProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */; };
 		BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */; };
+		BDB75ADD291539E500E17AEE /* FavoriteCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75ADC291539E500E17AEE /* FavoriteCity.swift */; };
+		BDB75ADF29153BE700E17AEE /* MapPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75ADE29153BE700E17AEE /* MapPlace.swift */; };
+		BDB75AF629154ABC00E17AEE /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75AF529154ABC00E17AEE /* Moya */; };
+		BDB75AF929154AE100E17AEE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75AF829154AE100E17AEE /* SnapKit */; };
+		BDB75AFC29154B0E00E17AEE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75AFB29154B0E00E17AEE /* SDWebImage */; };
+		BDB75AFF29154FD400E17AEE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75AFE29154FD400E17AEE /* Realm */; };
+		BDB75B0129154FD400E17AEE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75B0029154FD400E17AEE /* RealmSwift */; };
 		BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */; };
 		BDC10DCD28D5C5A4003881C1 /* PlacePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */; };
 		BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */; };
@@ -50,8 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		568BE2585C74938EFA91D0AD /* Pods-FoursquarePlacesApiTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquarePlacesApiTestProject.release.xcconfig"; path = "Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject.release.xcconfig"; sourceTree = "<group>"; };
-		6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoursquarePlacesApiTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0D1BD328D1E01F00C512BD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BD0E65B628BA1BE600AD1AC8 /* FoursquarePlacesApiTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquarePlacesApiTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,11 +93,12 @@
 		BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsTVCell.xib; sourceTree = "<group>"; };
 		BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareProvider.swift; sourceTree = "<group>"; };
 		BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
+		BDB75ADC291539E500E17AEE /* FavoriteCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCity.swift; sourceTree = "<group>"; };
+		BDB75ADE29153BE700E17AEE /* MapPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlace.swift; sourceTree = "<group>"; };
 		BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePinView.swift; sourceTree = "<group>"; };
 		BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTBCell.swift; sourceTree = "<group>"; };
 		BDC9145028BCF27A002F6DAD /* SearchTBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTBCell.xib; sourceTree = "<group>"; };
-		C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; path = "Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +106,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				530FCD89759A61534F57E7C0 /* Pods_FoursquarePlacesApiTestProject.framework in Frameworks */,
+				BDB75AF929154AE100E17AEE /* SnapKit in Frameworks */,
+				BDB75AF629154ABC00E17AEE /* Moya in Frameworks */,
+				BDB75AFF29154FD400E17AEE /* Realm in Frameworks */,
+				BDB75B0129154FD400E17AEE /* RealmSwift in Frameworks */,
+				BDB75AFC29154B0E00E17AEE /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,18 +120,8 @@
 		5F35DE64443C6F2F2A33A23A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */,
-				568BE2585C74938EFA91D0AD /* Pods-FoursquarePlacesApiTestProject.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		B82426FFE77A8A020CF0DCC7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6A56C88214FFF062B9DCC3C8 /* Pods_FoursquarePlacesApiTestProject.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BD0D1BD228D1DFE800C512BD /* MapVC */ = {
@@ -140,7 +139,7 @@
 				BD0E65B828BA1BE600AD1AC8 /* FoursquarePlacesApiTestProject */,
 				BD0E65B728BA1BE600AD1AC8 /* Products */,
 				5F35DE64443C6F2F2A33A23A /* Pods */,
-				B82426FFE77A8A020CF0DCC7 /* Frameworks */,
+				BDB75AFD29154FD400E17AEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,8 +326,17 @@
 		BDB75ADB2915330500E17AEE /* PersistantDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				BDB75ADC291539E500E17AEE /* FavoriteCity.swift */,
+				BDB75ADE29153BE700E17AEE /* MapPlace.swift */,
 			);
 			path = PersistantDataManager;
+			sourceTree = "<group>";
+		};
+		BDB75AFD29154FD400E17AEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BDBA672928BE1E6200AC4878 /* LocationManager */ = {
@@ -373,17 +381,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD0E65CA28BA1BE900AD1AC8 /* Build configuration list for PBXNativeTarget "FoursquarePlacesApiTestProject" */;
 			buildPhases = (
-				B4BC10237B46E73D6AD65CAF /* [CP] Check Pods Manifest.lock */,
 				BD0E65B228BA1BE600AD1AC8 /* Sources */,
 				BD0E65B328BA1BE600AD1AC8 /* Frameworks */,
 				BD0E65B428BA1BE600AD1AC8 /* Resources */,
-				28B6A7582DDFF148DC7D44D9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FoursquarePlacesApiTestProject;
+			packageProductDependencies = (
+				BDB75AF529154ABC00E17AEE /* Moya */,
+				BDB75AF829154AE100E17AEE /* SnapKit */,
+				BDB75AFB29154B0E00E17AEE /* SDWebImage */,
+				BDB75AFE29154FD400E17AEE /* Realm */,
+				BDB75B0029154FD400E17AEE /* RealmSwift */,
+			);
 			productName = FoursquarePlacesApiTestProject;
 			productReference = BD0E65B628BA1BE600AD1AC8 /* FoursquarePlacesApiTestProject.app */;
 			productType = "com.apple.product-type.application";
@@ -412,6 +425,12 @@
 				Base,
 			);
 			mainGroup = BD0E65AD28BA1BE600AD1AC8;
+			packageReferences = (
+				BDB75AF1291549E400E17AEE /* XCRemoteSwiftPackageReference "realm-swift" */,
+				BDB75AF429154ABB00E17AEE /* XCRemoteSwiftPackageReference "Moya" */,
+				BDB75AF729154AE100E17AEE /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BDB75AFA29154B0E00E17AEE /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = BD0E65B728BA1BE600AD1AC8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -444,48 +463,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		28B6A7582DDFF148DC7D44D9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoursquarePlacesApiTestProject/Pods-FoursquarePlacesApiTestProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4BC10237B46E73D6AD65CAF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FoursquarePlacesApiTestProject-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BD0E65B228BA1BE600AD1AC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -510,10 +487,12 @@
 				BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */,
 				BD9C764428D7680B006431DA /* ImageScrollView.swift in Sources */,
 				BDA6015C2914026C00869330 /* FavoritePlacesViewController.swift in Sources */,
+				BDB75ADD291539E500E17AEE /* FavoriteCity.swift in Sources */,
 				BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
 				BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */,
 				BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */,
+				BDB75ADF29153BE700E17AEE /* MapPlace.swift in Sources */,
 				BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */,
 				BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */,
 				BD9C6A5628CF9DFF00012921 /* Categories.swift in Sources */,
@@ -658,7 +637,6 @@
 		};
 		BD0E65CB28BA1BE900AD1AC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C64184407A01D17479C92606 /* Pods-FoursquarePlacesApiTestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -688,7 +666,6 @@
 		};
 		BD0E65CC28BA1BE900AD1AC8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 568BE2585C74938EFA91D0AD /* Pods-FoursquarePlacesApiTestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -738,6 +715,69 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BDB75AF1291549E400E17AEE /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BDB75AF429154ABB00E17AEE /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BDB75AF729154AE100E17AEE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		BDB75AFA29154B0E00E17AEE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BDB75AF529154ABC00E17AEE /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDB75AF429154ABB00E17AEE /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		BDB75AF829154AE100E17AEE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDB75AF729154AE100E17AEE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		BDB75AFB29154B0E00E17AEE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDB75AFA29154B0E00E17AEE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		BDB75AFE29154FD400E17AEE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDB75AF1291549E400E17AEE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		BDB75B0029154FD400E17AEE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDB75AF1291549E400E17AEE /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BD0E65AE28BA1BE600AD1AC8 /* Project object */;
 }
