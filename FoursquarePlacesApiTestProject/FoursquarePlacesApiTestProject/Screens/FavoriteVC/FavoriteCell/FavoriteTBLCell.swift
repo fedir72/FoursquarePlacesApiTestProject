@@ -22,8 +22,8 @@ class FavoriteTBLCell: UITableViewCell {
 
     }
     
-    func setupCell(by city: CityModel) {
-        self.countryNameLabel.text = city.country ?? "UA"
+    func setupCell(by city: PlaceProtocol) {
+        self.countryNameLabel.text = city.country ?? "UI"
         self.cityNameLabel.text = city.name
         self.stateLabel.text = "region: \(city.state ?? "has not found")"
     }

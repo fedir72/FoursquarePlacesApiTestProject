@@ -10,7 +10,7 @@ import Moya
 
 class FavoritePlacesViewController: UIViewController {
     let moya = NetworkProvider()
-    var datasource: [CityModel] = [] {
+    var datasource: [PlaceProtocol] = [] {
         didSet {
             print(datasource)
             tableView.reloadData()
@@ -25,11 +25,26 @@ class FavoritePlacesViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        datasource = FavoriteCity.getTestdata()
     }
     
     @IBAction func searchPlacesButtonPressed(_ sender: Any) {
-        print("request")
-        moya.openweather.request(.getCities(term: "gor", limit: 10)) {[weak self] result in
+        self.searchNewCityAlert { [weak self] term in
+            self?.searchCity(by: term)
+        }
+    
+    }
+    
+    fileprivate func setupVC() {
+        view.backgroundColor = .green
+        tableView.register(FavoriteTBLCell.nib(),
+                           forCellReuseIdentifier: FavoriteTBLCell.id)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    fileprivate func searchCity(by term: String) {
+        moya.openweather.request(.getCities(term: term, limit: 10)) {[weak self] result in
             switch result {
             case .success(let responce):
                // print(String(bytes: responce.data, encoding: .utf8))
@@ -39,19 +54,10 @@ class FavoritePlacesViewController: UIViewController {
                         return
                     }
                     self?.datasource = cityes
-                
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    fileprivate func setupVC() {
-        view.backgroundColor = .green
-        tableView.register(FavoriteTBLCell.nib(),
-                           forCellReuseIdentifier: FavoriteTBLCell.id)
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
 }
@@ -78,7 +84,7 @@ extension FavoritePlacesViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension FavoritePlacesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 60
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if datasource.isEmpty {

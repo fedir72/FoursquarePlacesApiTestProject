@@ -15,6 +15,7 @@ protocol SearchViewControllerDelegate: AnyObject {
 }
 
 class SearchViewController: UIViewController {
+    
     weak var delegate: SearchViewControllerDelegate?
     let fsqProvider = NetworkProvider()
     
@@ -27,7 +28,7 @@ class SearchViewController: UIViewController {
     var userLocation = CLLocation() {
         didSet {
         //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-            self.getDataForDatasource(term: nil, category: nil)
+           // self.getDataForDatasource(term: nil, category: nil)
       }
     }
     

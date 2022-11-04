@@ -37,6 +37,7 @@
 		BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */; };
 		BDADAB9528CC9ECE007A59A4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */; };
 		BDADAB9928CCA520007A59A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9828CCA520007A59A4 /* MainViewController.swift */; };
+		BDADEB3D2915AF4B00C06181 /* PlaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADEB3C2915AF4B00C06181 /* PlaceProtocol.swift */; };
 		BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */; };
 		BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620028BE5A5600D9FB4E /* TipsTVCell.swift */; };
 		BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */; };
@@ -94,6 +95,7 @@
 		BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMapPin.swift; sourceTree = "<group>"; };
 		BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		BDADAB9828CCA520007A59A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BDADEB3C2915AF4B00C06181 /* PlaceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceProtocol.swift; sourceTree = "<group>"; };
 		BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTipsViewController.swift; sourceTree = "<group>"; };
 		BDB4620028BE5A5600D9FB4E /* TipsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTVCell.swift; sourceTree = "<group>"; };
 		BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsTVCell.xib; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				BD0E65C728BA1BE900AD1AC8 /* Info.plist */,
 				BD28E92528D856700054EE22 /* autumn.jpeg */,
+				BDADEB3B2915AF0F00C06181 /* Protocols */,
 				BD0E65CE28BA1F3600AD1AC8 /* Application */,
 				BDA160F928BD4836003DF861 /* Extensions */,
 				BDBA672928BE1E6200AC4878 /* LocationManager */,
@@ -198,6 +201,7 @@
 			children = (
 				BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */,
 				BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */,
+				BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */,
 				BD0E65CF28BA1F5700AD1AC8 /* Storyboards */,
 			);
 			path = Application;
@@ -250,7 +254,6 @@
 		BDA160F928BD4836003DF861 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */,
 				BDA160FA28BD4857003DF861 /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -298,6 +301,14 @@
 				BDADAB9828CCA520007A59A4 /* MainViewController.swift */,
 			);
 			path = MainVC;
+			sourceTree = "<group>";
+		};
+		BDADEB3B2915AF0F00C06181 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BDADEB3C2915AF4B00C06181 /* PlaceProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		BDB461FC28BE5A0400D9FB4E /* UserTipsVC */ = {
@@ -521,6 +532,7 @@
 				BD0E65E328BA23BC00AD1AC8 /* PhotoItem.swift in Sources */,
 				BDA160F728BD30B1003DF861 /* PhotoCVCell.swift in Sources */,
 				BDB4620528BE5F8000D9FB4E /* NetworkProvider.swift in Sources */,
+				BDADEB3D2915AF4B00C06181 /* PlaceProtocol.swift in Sources */,
 				BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */,
 				BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */,
 				BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */,
