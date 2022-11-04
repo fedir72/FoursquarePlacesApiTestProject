@@ -9,5 +9,6 @@ target 'FoursquarePlacesApiTestProject' do
    pod 'SDWebImage'
    pod 'SnapKit'
    pod 'Moya'
+   pod 'RealmSwift'
 
 end
