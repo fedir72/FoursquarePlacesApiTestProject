@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteTBLCell" rowHeight="74" id="KGk-i7-Jjw" customClass="FavoriteTBLCell" customModule="FoursquarePlacesApiTestProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="yYb-f8-ygl">
+                        <rect key="frame" x="15" y="5" width="211" height="37"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="state label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.34999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Cs3-GY-he4">
+                        <rect key="frame" x="15" y="42" width="206" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" systemColor="systemGray2Color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="33X-ho-mhi">
+                        <rect key="frame" x="236" y="0.0" width="74" height="74"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="33X-ho-mhi" secondAttribute="height" multiplier="1:1" id="inU-OU-Vdt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                        <color key="textColor" systemColor="systemPinkColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="Cs3-GY-he4" firstAttribute="top" secondItem="yYb-f8-ygl" secondAttribute="bottom" id="0km-bE-liN"/>
+                    <constraint firstItem="yYb-f8-ygl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="9Gr-Lt-7QS"/>
+                    <constraint firstItem="yYb-f8-ygl" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.5" id="DF2-ps-VcL"/>
+                    <constraint firstItem="33X-ho-mhi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IaE-0J-Dop"/>
+                    <constraint firstItem="Cs3-GY-he4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OYe-zc-j8n"/>
+                    <constraint firstItem="33X-ho-mhi" firstAttribute="leading" secondItem="yYb-f8-ygl" secondAttribute="trailing" constant="10" id="Rt4-Vh-8DE"/>
+                    <constraint firstAttribute="bottom" secondItem="33X-ho-mhi" secondAttribute="bottom" id="e4I-Kl-YmS"/>
+                    <constraint firstAttribute="bottom" secondItem="Cs3-GY-he4" secondAttribute="bottom" id="edA-wT-hlZ"/>
+                    <constraint firstItem="33X-ho-mhi" firstAttribute="leading" secondItem="Cs3-GY-he4" secondAttribute="trailing" constant="15" id="mCh-GB-XMV"/>
+                    <constraint firstItem="yYb-f8-ygl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="nuO-Yq-Zu3"/>
+                    <constraint firstAttribute="trailing" secondItem="33X-ho-mhi" secondAttribute="trailing" constant="10" id="pdi-M3-e7h"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cityNameLabel" destination="yYb-f8-ygl" id="ZjM-xO-kub"/>
+                <outlet property="countryNameLabel" destination="33X-ho-mhi" id="hYt-XY-VzQ"/>
+                <outlet property="stateLabel" destination="Cs3-GY-he4" id="wHd-pA-Vug"/>
+            </connections>
+            <point key="canvasLocation" x="130.76923076923077" y="-0.7109004739336493"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

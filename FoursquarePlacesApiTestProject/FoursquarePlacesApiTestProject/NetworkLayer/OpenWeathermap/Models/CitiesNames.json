@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Raids",
+        "local_names": {
+            "uk": "Ред",
+            "fr": "Raids"
+        },
+        "lat": 49.2174798,
+        "lon": -1.3455117,
+        "country": "FR",
+        "state": "Normandy"
+    },
+    {
+        "name": "RED",
+        "local_names": {
+            "ru": "RED"
+        },
+        "lat": 55.115645799999996,
+        "lon": 82.93472325408419,
+        "country": "RU",
+        "state": "Novosibirsk Oblast"
+    },
+    {
+        "name": "Red",
+        "lat": 17.087222,
+        "lon": -96.033889,
+        "country": "MX"
+    }
+]

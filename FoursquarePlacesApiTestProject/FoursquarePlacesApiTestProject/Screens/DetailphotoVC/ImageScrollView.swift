@@ -83,7 +83,7 @@ class ImageScrollView: UIScrollView {
     
     private func centerImage() {
         let boundsSize = self.bounds.size
-        var frameTocenter = imageZoomView.frame ?? CGRect.zero
+        var frameTocenter = imageZoomView.frame  ?? CGRect.zero
         if frameTocenter.size.width < boundsSize.width {
             frameTocenter.origin.x = (boundsSize.width - frameTocenter.size.width)/2
         }else{

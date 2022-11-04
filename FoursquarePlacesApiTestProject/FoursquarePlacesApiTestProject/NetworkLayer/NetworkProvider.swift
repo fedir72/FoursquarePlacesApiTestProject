@@ -8,9 +8,10 @@
 import Foundation
 import Moya
 
-class FoursquareProvider {
+class NetworkProvider {
     
-   let moya = MoyaProvider<FoursquareService>()
+   lazy var foursquare = MoyaProvider<FoursquareService>()
+   lazy var openweather = MoyaProvider<OpenWeatherMapService>()
     
    func decodejson<T:Decodable>(type: T.Type, from: Data?) -> T? {
         let decoder = JSONDecoder()
@@ -24,6 +25,5 @@ class FoursquareProvider {
             return nil
         }
     }
-    
-    
+
 }

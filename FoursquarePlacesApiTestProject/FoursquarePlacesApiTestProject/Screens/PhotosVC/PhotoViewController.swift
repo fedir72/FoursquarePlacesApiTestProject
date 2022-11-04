@@ -26,7 +26,7 @@ class PhotoViewController: UIViewController {
     
     static let id = "PhotoViewController"
     let userdefault = UserDefaults.standard
-    private let fsqProvider = FoursquareProvider()
+    private let fsqProvider = NetworkProvider()
     var fsqId = ""
     
     
@@ -83,7 +83,7 @@ class PhotoViewController: UIViewController {
         setupUI()
         setupBarButton()
         
-        self.fsqProvider.moya.request(.placePhotos(id: self.fsqId)) { result in
+        self.fsqProvider.foursquare.request(.placePhotos(id: self.fsqId)) { result in
             switch result {
             case .success(let responce):
                 // print("Data", String(data: responce.data, encoding: .utf8))

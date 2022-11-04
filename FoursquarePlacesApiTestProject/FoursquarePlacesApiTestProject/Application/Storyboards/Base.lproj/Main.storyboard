@@ -57,7 +57,7 @@
                     <navigationItem key="navigationItem" id="KM3-bR-S8u">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="9qS-Ld-5Ha">
                             <connections>
-                                <action selector="searchPlacesButtonPressed:" destination="h6k-Tt-tCz" id="au0-RS-llr"/>
+                                <action selector="searchPlacesButtonPressed:" destination="h6k-Tt-tCz" id="oSG-A0-mfM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

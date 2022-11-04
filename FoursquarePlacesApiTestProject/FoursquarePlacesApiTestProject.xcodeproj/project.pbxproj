@@ -14,7 +14,7 @@
 		BD0E65C128BA1BE600AD1AC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */; };
 		BD0E65C328BA1BE900AD1AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */; };
 		BD0E65C628BA1BE900AD1AC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */; };
-		BD0E65D528BA21B600AD1AC8 /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65D428BA21B600AD1AC8 /* MoyaService.swift */; };
+		BD0E65D528BA21B600AD1AC8 /* FoursquareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65D428BA21B600AD1AC8 /* FoursquareService.swift */; };
 		BD0E65D728BA228B00AD1AC8 /* Place.json in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65D628BA228B00AD1AC8 /* Place.json */; };
 		BD0E65D928BA22A200AD1AC8 /* Places.json in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65D828BA22A200AD1AC8 /* Places.json */; };
 		BD0E65DB28BA22C500AD1AC8 /* Placesnearby.json in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65DA28BA22C500AD1AC8 /* Placesnearby.json */; };
@@ -40,7 +40,7 @@
 		BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */; };
 		BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620028BE5A5600D9FB4E /* TipsTVCell.swift */; };
 		BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */; };
-		BDB4620528BE5F8000D9FB4E /* FoursquareProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */; };
+		BDB4620528BE5F8000D9FB4E /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620428BE5F8000D9FB4E /* NetworkProvider.swift */; };
 		BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */; };
 		BDB75ADD291539E500E17AEE /* FavoriteCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75ADC291539E500E17AEE /* FavoriteCity.swift */; };
 		BDB75ADF29153BE700E17AEE /* MapPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75ADE29153BE700E17AEE /* MapPlace.swift */; };
@@ -49,6 +49,12 @@
 		BDB75AFC29154B0E00E17AEE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75AFB29154B0E00E17AEE /* SDWebImage */; };
 		BDB75AFF29154FD400E17AEE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75AFE29154FD400E17AEE /* Realm */; };
 		BDB75B0129154FD400E17AEE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BDB75B0029154FD400E17AEE /* RealmSwift */; };
+		BDB75B052915521F00E17AEE /* OpenWeatherMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75B042915521F00E17AEE /* OpenWeatherMapService.swift */; };
+		BDB75B072915532000E17AEE /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75B062915532000E17AEE /* CityModel.swift */; };
+		BDB75B09291553C400E17AEE /* CitiesNames.json in Resources */ = {isa = PBXBuildFile; fileRef = BDB75B08291553C400E17AEE /* CitiesNames.json */; };
+		BDB75B0C2915635900E17AEE /* FavoriteTBLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75B0A2915635900E17AEE /* FavoriteTBLCell.swift */; };
+		BDB75B0D2915635900E17AEE /* FavoriteTBLCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB75B0B2915635900E17AEE /* FavoriteTBLCell.xib */; };
+		BDB75B10291565EF00E17AEE /* CityErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75B0F291565EF00E17AEE /* CityErrorModel.swift */; };
 		BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */; };
 		BDC10DCD28D5C5A4003881C1 /* PlacePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */; };
 		BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */; };
@@ -65,7 +71,7 @@
 		BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD0E65C528BA1BE900AD1AC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD0E65C728BA1BE900AD1AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD0E65D428BA21B600AD1AC8 /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
+		BD0E65D428BA21B600AD1AC8 /* FoursquareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareService.swift; sourceTree = "<group>"; };
 		BD0E65D628BA228B00AD1AC8 /* Place.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Place.json; sourceTree = "<group>"; };
 		BD0E65D828BA22A200AD1AC8 /* Places.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Places.json; sourceTree = "<group>"; };
 		BD0E65DA28BA22C500AD1AC8 /* Placesnearby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Placesnearby.json; sourceTree = "<group>"; };
@@ -91,10 +97,16 @@
 		BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTipsViewController.swift; sourceTree = "<group>"; };
 		BDB4620028BE5A5600D9FB4E /* TipsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTVCell.swift; sourceTree = "<group>"; };
 		BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsTVCell.xib; sourceTree = "<group>"; };
-		BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareProvider.swift; sourceTree = "<group>"; };
+		BDB4620428BE5F8000D9FB4E /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		BDB4620728BE6D3B00D9FB4E /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		BDB75ADC291539E500E17AEE /* FavoriteCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCity.swift; sourceTree = "<group>"; };
 		BDB75ADE29153BE700E17AEE /* MapPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlace.swift; sourceTree = "<group>"; };
+		BDB75B042915521F00E17AEE /* OpenWeatherMapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapService.swift; sourceTree = "<group>"; };
+		BDB75B062915532000E17AEE /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		BDB75B08291553C400E17AEE /* CitiesNames.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CitiesNames.json; sourceTree = "<group>"; };
+		BDB75B0A2915635900E17AEE /* FavoriteTBLCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTBLCell.swift; sourceTree = "<group>"; };
+		BDB75B0B2915635900E17AEE /* FavoriteTBLCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTBLCell.xib; sourceTree = "<group>"; };
+		BDB75B0F291565EF00E17AEE /* CityErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityErrorModel.swift; sourceTree = "<group>"; };
 		BDBA672A28BE1E8B00AC4878 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		BDC10DCC28D5C5A4003881C1 /* PlacePinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePinView.swift; sourceTree = "<group>"; };
 		BDC9144F28BCF27A002F6DAD /* SearchTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTBCell.swift; sourceTree = "<group>"; };
@@ -203,9 +215,9 @@
 		BD0E65D028BA1F9B00AD1AC8 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
-				BD0E65D328BA1FE600AD1AC8 /* MoyaLayer */,
-				BD0E65D228BA1FC600AD1AC8 /* Models */,
-				BD0E65D128BA1FB000AD1AC8 /* Jsons */,
+				BDB4620428BE5F8000D9FB4E /* NetworkProvider.swift */,
+				BDB75B03291551AB00E17AEE /* OpenWeathermap */,
+				BDB75B022915516B00E17AEE /* Forsquare */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -233,15 +245,6 @@
 				BD6203A128BB77C400DE8905 /* TipsModels.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		BD0E65D328BA1FE600AD1AC8 /* MoyaLayer */ = {
-			isa = PBXGroup;
-			children = (
-				BD0E65D428BA21B600AD1AC8 /* MoyaService.swift */,
-				BDB4620428BE5F8000D9FB4E /* FoursquareProvider.swift */,
-			);
-			path = MoyaLayer;
 			sourceTree = "<group>";
 		};
 		BDA160F928BD4836003DF861 /* Extensions */ = {
@@ -275,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */,
+				BDB75B0E2915652400E17AEE /* FavoriteCell */,
 			);
 			path = FavoriteVC;
 			sourceTree = "<group>";
@@ -337,6 +341,44 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDB75B022915516B00E17AEE /* Forsquare */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E65D128BA1FB000AD1AC8 /* Jsons */,
+				BD0E65D228BA1FC600AD1AC8 /* Models */,
+				BD0E65D428BA21B600AD1AC8 /* FoursquareService.swift */,
+			);
+			path = Forsquare;
+			sourceTree = "<group>";
+		};
+		BDB75B03291551AB00E17AEE /* OpenWeathermap */ = {
+			isa = PBXGroup;
+			children = (
+				BDB75B042915521F00E17AEE /* OpenWeatherMapService.swift */,
+				BDB75B11291565FC00E17AEE /* Models */,
+			);
+			path = OpenWeathermap;
+			sourceTree = "<group>";
+		};
+		BDB75B0E2915652400E17AEE /* FavoriteCell */ = {
+			isa = PBXGroup;
+			children = (
+				BDB75B0A2915635900E17AEE /* FavoriteTBLCell.swift */,
+				BDB75B0B2915635900E17AEE /* FavoriteTBLCell.xib */,
+			);
+			path = FavoriteCell;
+			sourceTree = "<group>";
+		};
+		BDB75B11291565FC00E17AEE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BDB75B08291553C400E17AEE /* CitiesNames.json */,
+				BDB75B062915532000E17AEE /* CityModel.swift */,
+				BDB75B0F291565EF00E17AEE /* CityErrorModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BDBA672928BE1E6200AC4878 /* LocationManager */ = {
@@ -454,10 +496,12 @@
 				BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */,
 				BDC9145228BCF27A002F6DAD /* SearchTBCell.xib in Resources */,
 				BD0E65DF28BA230600AD1AC8 /* Error.json in Resources */,
+				BDB75B09291553C400E17AEE /* CitiesNames.json in Resources */,
 				BD0E65C128BA1BE600AD1AC8 /* Main.storyboard in Resources */,
 				BD0E65E128BA232000AD1AC8 /* Tips.json in Resources */,
 				BD0E65DB28BA22C500AD1AC8 /* Placesnearby.json in Resources */,
 				BD0E65D728BA228B00AD1AC8 /* Place.json in Resources */,
+				BDB75B0D2915635900E17AEE /* FavoriteTBLCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,16 +513,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDADAB9928CCA520007A59A4 /* MainViewController.swift in Sources */,
+				BDB75B0C2915635900E17AEE /* FavoriteTBLCell.swift in Sources */,
 				BDADAB9528CC9ECE007A59A4 /* CategoryViewController.swift in Sources */,
+				BDB75B10291565EF00E17AEE /* CityErrorModel.swift in Sources */,
 				BD0E65BE28BA1BE600AD1AC8 /* SearchViewController.swift in Sources */,
 				BD0E65E528BA240B00AD1AC8 /* PlaceModels.swift in Sources */,
 				BD0E65E328BA23BC00AD1AC8 /* PhotoItem.swift in Sources */,
 				BDA160F728BD30B1003DF861 /* PhotoCVCell.swift in Sources */,
-				BDB4620528BE5F8000D9FB4E /* FoursquareProvider.swift in Sources */,
+				BDB4620528BE5F8000D9FB4E /* NetworkProvider.swift in Sources */,
 				BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */,
 				BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */,
 				BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */,
-				BD0E65D528BA21B600AD1AC8 /* MoyaService.swift in Sources */,
+				BD0E65D528BA21B600AD1AC8 /* FoursquareService.swift in Sources */,
 				BD0D1BD428D1E01F00C512BD /* MapViewController.swift in Sources */,
 				BDC10DCD28D5C5A4003881C1 /* PlacePinView.swift in Sources */,
 				BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */,
@@ -488,11 +534,13 @@
 				BD9C764428D7680B006431DA /* ImageScrollView.swift in Sources */,
 				BDA6015C2914026C00869330 /* FavoritePlacesViewController.swift in Sources */,
 				BDB75ADD291539E500E17AEE /* FavoriteCity.swift in Sources */,
+				BDB75B072915532000E17AEE /* CityModel.swift in Sources */,
 				BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
 				BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */,
 				BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */,
 				BDB75ADF29153BE700E17AEE /* MapPlace.swift in Sources */,
+				BDB75B052915521F00E17AEE /* OpenWeatherMapService.swift in Sources */,
 				BDBA672B28BE1E8B00AC4878 /* UserLocationManager.swift in Sources */,
 				BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */,
 				BD9C6A5628CF9DFF00012921 /* Categories.swift in Sources */,

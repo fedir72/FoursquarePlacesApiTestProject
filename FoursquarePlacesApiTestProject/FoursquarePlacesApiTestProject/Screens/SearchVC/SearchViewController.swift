@@ -16,7 +16,7 @@ protocol SearchViewControllerDelegate: AnyObject {
 
 class SearchViewController: UIViewController {
     weak var delegate: SearchViewControllerDelegate?
-    let fsqProvider = FoursquareProvider()
+    let fsqProvider = NetworkProvider()
     
     var isShowedSearchbar = false {
         didSet { slideTableview() }
@@ -192,7 +192,7 @@ private extension SearchViewController {
     }
     
     func getDataForDatasource(term: String?,category index: String? ) {
-        self.fsqProvider.moya.request(
+        self.fsqProvider.foursquare.request(
          .getPlaces(term: term ?? "",
                 category: index ?? "",
                 lat: self.userLocation.coordinate.latitude,
