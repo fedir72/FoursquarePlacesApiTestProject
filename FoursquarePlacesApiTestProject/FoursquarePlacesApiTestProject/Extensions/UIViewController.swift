@@ -9,10 +9,10 @@ import UIKit
 
 extension UIViewController {
     
-    func someWrongAlert(_ title: String ,_ message: String, completion:@escaping (() -> Void)) {
+    func someWrongAlert(_ title: String ,_ message: String, completion: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Cancel", style: .destructive) { _ in
-            completion()
+            completion?()
         }
         alert.addAction(action)
         self.present(alert, animated: true)

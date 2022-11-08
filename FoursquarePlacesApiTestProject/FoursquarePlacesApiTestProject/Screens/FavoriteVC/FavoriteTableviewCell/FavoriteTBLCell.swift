@@ -17,15 +17,15 @@ class FavoriteTBLCell: UITableViewCell {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//
+//    }
     
-    func setupCell(by city: PlaceProtocol) {
-        self.countryNameLabel.text = city.country ?? "UI"
+    func setupCell(by city: FavoriteCity) {
+        self.countryNameLabel.text = city.country
         self.cityNameLabel.text = city.name
-        self.stateLabel.text = "region: \(city.state ?? "has not found")"
+        self.stateLabel.text = "region: \(city.state)"
     }
     
 }

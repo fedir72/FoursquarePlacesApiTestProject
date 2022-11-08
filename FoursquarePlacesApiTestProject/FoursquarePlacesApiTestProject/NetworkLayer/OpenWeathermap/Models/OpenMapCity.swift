@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct CityModel: Decodable, PlaceProtocol {
+struct OpenMapCity: Decodable {
     let name: String
     let lat: Double
     let lon: Double
@@ -14,7 +14,7 @@ struct CityModel: Decodable, PlaceProtocol {
     let state: String?
 }
 
-extension CityModel {
+extension OpenMapCity {
    var coordinateText: String {
        return "lat: \(lat),lon: \(lon)"
     }

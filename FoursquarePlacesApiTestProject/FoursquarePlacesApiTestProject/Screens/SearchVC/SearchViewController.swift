@@ -27,8 +27,8 @@ class SearchViewController: UIViewController {
     }
     var userLocation = CLLocation() {
         didSet {
-        //print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-           // self.getDataForDatasource(term: nil, category: nil)
+//        print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
+//            self.getDataForDatasource(term: nil, category: nil)
       }
     }
     
@@ -182,7 +182,7 @@ private extension SearchViewController {
         alert.addAction(.init(title: "Show photos", style: .default) { _ in
               let vc =  PhotoViewController()
                 vc.fsqId = id
-                vc.title = title
+                vc.title = "\(title) images"
                 self.navigationController?.pushViewController(vc, animated: true)
         })
         alert.addAction(.init(title: "Show tips", style: .default) { _ in
