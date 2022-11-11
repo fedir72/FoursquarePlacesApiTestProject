@@ -21,6 +21,7 @@ class SearchTBCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .secondarySystemBackground
         iconImageView.layer.cornerRadius = 8
         iconImageView.backgroundColor = UIColor(named: "MyTint")
         iconImageView.tintColor = .white
@@ -33,8 +34,8 @@ class SearchTBCell: UITableViewCell {
     
     func setupCell(with place: Place) {
         nameLabel.text = place.name
-        categoryNameLAbel.text = place.categories.first?.name ?? "not found"
-       let url = place.categories.first?.icon.iconURl(resolution: .small)
+        categoryNameLAbel.text = place.categories?.first?.name ?? "not found"
+       let url = place.categories?.first?.icon.iconURl(resolution: .small)
        iconImageView.sd_setImage(with: url,
                                  placeholderImage: UIImage(systemName: "questionmark") )
     }

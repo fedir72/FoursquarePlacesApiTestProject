@@ -10,7 +10,7 @@ import RealmSwift
 import CoreLocation
 
 
-class FavoriteCity: Object {
+class RealmFavoriteCity: Object {
     
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var name: String = ""
@@ -18,7 +18,7 @@ class FavoriteCity: Object {
     @Persisted var lon: Double = 0.0
     @Persisted var country: String = ""
     @Persisted var state: String = ""
-    @Persisted var places: List<MapPlace>
+    @Persisted var places: List<RealmMapPlace>
     
     convenience init(name: String,
                      lat: Double,
@@ -39,10 +39,10 @@ class FavoriteCity: Object {
     
 }
 
-extension FavoriteCity {
+extension RealmFavoriteCity {
     
-    static func createFavoriteCity(by weatherModel: OpenMapCity) -> FavoriteCity {
-        return FavoriteCity(name: weatherModel.name,
+    static func createFavoriteCity(by weatherModel: OpenMapCity) -> RealmFavoriteCity {
+        return RealmFavoriteCity(name: weatherModel.name,
                             lat: weatherModel.lat,
                             lon: weatherModel.lon,
                             country: weatherModel.country ,

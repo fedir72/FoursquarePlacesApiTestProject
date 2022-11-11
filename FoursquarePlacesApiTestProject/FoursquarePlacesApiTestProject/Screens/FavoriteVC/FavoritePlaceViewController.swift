@@ -14,7 +14,7 @@ class FavoritePlaceViewController: UIViewController {
     
     private let realm = try! Realm()
     private let moya = NetworkProvider()
-    private var datasource: Results<FavoriteCity>?
+    private var datasource: Results<RealmFavoriteCity>?
     private var itemsToken: NotificationToken?
     
     private var tablevieIsEditable = true {
@@ -43,7 +43,7 @@ class FavoritePlaceViewController: UIViewController {
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        datasource = realm.objects(FavoriteCity.self)
+        datasource = realm.objects(RealmFavoriteCity.self)
         setupTAbleView()
         setupBarButtons()
     }
@@ -118,7 +118,7 @@ private extension FavoritePlaceViewController {
             let action = UIAlertAction(title: "\(place.name) - \(place.country ?? "")",
                                        style: .default) { [weak self] _ in
                 try! self?.realm.write {
-                    self?.realm.add(FavoriteCity.createFavoriteCity(by: place))
+                    self?.realm.add(RealmFavoriteCity.createFavoriteCity(by: place))
                 }
             }
             alert.addAction(action)

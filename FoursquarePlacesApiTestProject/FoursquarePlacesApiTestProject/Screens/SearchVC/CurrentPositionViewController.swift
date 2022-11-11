@@ -10,13 +10,13 @@ import Moya
 import CoreLocation
 import SnapKit
 
-protocol SearchViewControllerDelegate: AnyObject {
+protocol CurrentPositionControllerDelegate: AnyObject {
     func didSlideCategoryMenu()
 }
 
-class SearchViewController: UIViewController {
+class CurrentPositionViewController: UIViewController {
     
-    weak var delegate: SearchViewControllerDelegate?
+    weak var delegate: CurrentPositionControllerDelegate?
     private var location : CLLocation {
         didSet {
 //            print(self.location.coordinate.latitude,
@@ -36,7 +36,7 @@ class SearchViewController: UIViewController {
     }
     private var datasourse = [Place]() {
         didSet {
-            print("datasource:",datasourse.count)
+            self.datasourse.forEach(){$0.placeCategory()}
             placesTableView.reloadData()
         }
     }
@@ -77,7 +77,6 @@ class SearchViewController: UIViewController {
         navigationItem.backButtonDisplayMode = .minimal
          setupUI()
          setupVC()
-        print("did load")
         self.getDataForDatasource(term: nil,
                                   category: nil,
                                   lat: location.coordinate.latitude,
@@ -86,7 +85,7 @@ class SearchViewController: UIViewController {
 }
 
 //MARK: - UITableViewDatasource
-extension SearchViewController: UITableViewDataSource {
+extension CurrentPositionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return datasourse.count
     }
@@ -106,15 +105,16 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension SearchViewController: UITableViewDelegate {
+extension CurrentPositionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = datasourse[indexPath.row]
+        print(item.name,item.categories)
         self.cellDidTap(id: item.fsq_id, title: item.name )
  }
 }
 
-private extension SearchViewController {
+private extension CurrentPositionViewController {
     
     @objc  func showSettings() {
         placesTableView.isUserInteractionEnabled.toggle()
@@ -183,7 +183,7 @@ private extension SearchViewController {
             style: .plain,
             target: self,
             action: #selector(showSearchBar)),
-        UIBarButtonItem(
+            UIBarButtonItem(
             image: UIImage(systemName:"globe"),
             style: .plain,
             target: self,
@@ -252,7 +252,7 @@ private extension SearchViewController {
 }
 
 //MARK: - CategoryViewControllerDelegate
-extension SearchViewController: CategoryViewControllerDelegate {
+extension CurrentPositionViewController: CategoryViewControllerDelegate {
     
     func searchPlaces(_ from: AnyObject, by category: String, titletext: String) {
         print(category)
@@ -268,7 +268,7 @@ extension SearchViewController: CategoryViewControllerDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension SearchViewController: UISearchBarDelegate {
+extension CurrentPositionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let txt = searchBar.text, txt.isEmpty == false  else { return }
         searchBar.text = nil

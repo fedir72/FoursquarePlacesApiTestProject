@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
         didSet { print(currentLocation) }
     }
     lazy private var categoryVC = CategoryViewController()
-    lazy private var searchVC = SearchViewController(currentLocation)
+    lazy private var searchVC = CurrentPositionViewController(currentLocation)
     var navVC: UINavigationController?
     
     
@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: SearchViewControllerDelegate {
+extension MainViewController: CurrentPositionControllerDelegate {
     func didSlideCategoryMenu() {
         toogleMenu {
             print("menu togle")

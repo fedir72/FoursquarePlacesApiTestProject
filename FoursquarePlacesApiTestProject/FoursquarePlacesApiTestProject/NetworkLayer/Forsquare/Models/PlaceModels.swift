@@ -4,12 +4,16 @@ import Foundation
 
 struct Place: Decodable {
     let fsq_id: String
-    let categories: [Category]
+    let categories: [Category]?
     let geocodes: Main
     let link: String
     let location: Location
     let name: String
     let timezone: String?
+    
+    func placeCategory () {
+        print("category:",categories?.count ?? 0)
+    }
     }
 
 struct Location: Decodable {
@@ -38,7 +42,7 @@ struct Icon: Decodable {
     }
  
     func iconURl(resolution: IconResolution) -> URL? {
-        let str = self.prefix + resolution.rawValue + self.suffix
+       let str = self.prefix + resolution.rawValue + self.suffix
         //print(str)
         return URL(string: str)
     }

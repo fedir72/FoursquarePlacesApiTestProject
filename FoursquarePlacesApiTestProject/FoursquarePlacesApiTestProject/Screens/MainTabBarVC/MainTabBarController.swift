@@ -49,8 +49,8 @@ private extension MainTabBarController {
         vc.currentLocation = location
         let mainVC = createController(addNavVC: false,
                                       controller: vc,
-                                      tabBarText: "Places",
-                                      tabBarimage: "magnifyingglass")
+                                      tabBarText: "Current",
+                                      tabBarimage: "mappin.circle")
         let favoriteVC = createController(addNavVC: true,
                                           controller: FavoritePlaceViewController(),
                                           tabBarText: "Favorites",

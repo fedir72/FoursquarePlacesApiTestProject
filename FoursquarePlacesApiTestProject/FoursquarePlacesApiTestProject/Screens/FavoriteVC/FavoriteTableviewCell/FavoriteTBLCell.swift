@@ -23,7 +23,7 @@ class FavoriteTBLCell: UITableViewCell {
         }
     }
     
-    func setupCell(by city: FavoriteCity) {
+    func setupCell(by city: RealmFavoriteCity) {
         self.countryNameLabel.text = city.country
         self.cityNameLabel.text = city.name
         self.stateLabel.text = "region: \(city.state)"

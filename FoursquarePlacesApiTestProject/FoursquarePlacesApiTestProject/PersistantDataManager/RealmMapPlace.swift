@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class MapPlace:  EmbeddedObject {
+class RealmMapPlace:  EmbeddedObject {
    //embedded object can not have id 
     @Persisted var name: String = ""
     @Persisted var latitude: Double = 0.0

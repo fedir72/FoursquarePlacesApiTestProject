@@ -58,6 +58,10 @@ class MapViewController: UIViewController {
         setupUI()
         setupPlaces()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("places:",places.count)
+    }
     
     private func setupUI() {
         view.backgroundColor =  .systemBackground

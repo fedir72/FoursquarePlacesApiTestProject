@@ -26,9 +26,15 @@ class PlaceMapPin: NSObject, MKAnnotation {
     }
   
     init(place: Place ) {
-        self.imageUrl = place.categories[0].icon.iconURl(resolution: .small) 
+        if place.categories != nil && place.categories!.isEmpty == false {
+            self.imageUrl = place.categories?[0].icon.iconURl(resolution: .micro)
+            self.subtitle = place.categories![0].name
+        } else {
+           let plaseholderURL = Bundle.main.url(forResource: "globe", withExtension: "png")
+            self .imageUrl = plaseholderURL
+            self.subtitle = ""
+        }
         self.title = place.name
-        self.subtitle = place.categories[0].name
         self.coordinate = .init(latitude: place.geocodes.main?.latitude ?? 0.0,
                                 longitude: place.geocodes.main?.longitude ?? 0.0)
     }
