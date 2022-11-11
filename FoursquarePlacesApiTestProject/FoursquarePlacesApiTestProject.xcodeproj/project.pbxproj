@@ -11,7 +11,6 @@
 		BD0E65BA28BA1BE600AD1AC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */; };
 		BD0E65BC28BA1BE600AD1AC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */; };
 		BD0E65BE28BA1BE600AD1AC8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65BD28BA1BE600AD1AC8 /* SearchViewController.swift */; };
-		BD0E65C128BA1BE600AD1AC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */; };
 		BD0E65C328BA1BE900AD1AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */; };
 		BD0E65C628BA1BE900AD1AC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */; };
 		BD0E65D528BA21B600AD1AC8 /* FoursquareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E65D428BA21B600AD1AC8 /* FoursquareService.swift */; };
@@ -33,11 +32,12 @@
 		BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */; };
 		BDA160FB28BD4857003DF861 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA160FA28BD4857003DF861 /* UIViewController.swift */; };
 		BDA3722728BD174F005EDD2B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3722628BD174F005EDD2B /* PhotoViewController.swift */; };
-		BDA6015C2914026C00869330 /* FavoritePlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */; };
+		BDA4B9EB291C0D3200D8CFBA /* FavoritePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA4B9E9291C0D3200D8CFBA /* FavoritePlaceViewController.swift */; };
+		BDA4B9EC291C0D3200D8CFBA /* FavoritePlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA4B9EA291C0D3200D8CFBA /* FavoritePlaceViewController.xib */; };
 		BDA90F6628D3A4C300A80112 /* PlaceMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */; };
 		BDADAB9528CC9ECE007A59A4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */; };
 		BDADAB9928CCA520007A59A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADAB9828CCA520007A59A4 /* MainViewController.swift */; };
-		BDADEB3D2915AF4B00C06181 /* PlaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADEB3C2915AF4B00C06181 /* PlaceProtocol.swift */; };
+		BDB00C9D291BD6B400D8778E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB00C9C291BD6B400D8778E /* MainTabBarController.swift */; };
 		BDB461FE28BE5A2900D9FB4E /* UserTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */; };
 		BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4620028BE5A5600D9FB4E /* TipsTVCell.swift */; };
 		BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */; };
@@ -69,7 +69,6 @@
 		BD0E65B928BA1BE600AD1AC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD0E65BB28BA1BE600AD1AC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BD0E65BD28BA1BE600AD1AC8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		BD0E65C028BA1BE600AD1AC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD0E65C228BA1BE900AD1AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD0E65C528BA1BE900AD1AC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD0E65C728BA1BE900AD1AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,11 +91,12 @@
 		BDA160F628BD30B1003DF861 /* PhotoCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCVCell.xib; sourceTree = "<group>"; };
 		BDA160FA28BD4857003DF861 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		BDA3722628BD174F005EDD2B /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewController.swift; sourceTree = "<group>"; };
+		BDA4B9E9291C0D3200D8CFBA /* FavoritePlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceViewController.swift; sourceTree = "<group>"; };
+		BDA4B9EA291C0D3200D8CFBA /* FavoritePlaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritePlaceViewController.xib; sourceTree = "<group>"; };
 		BDA90F6528D3A4C300A80112 /* PlaceMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMapPin.swift; sourceTree = "<group>"; };
 		BDADAB9428CC9ECE007A59A4 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		BDADAB9828CCA520007A59A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		BDADEB3C2915AF4B00C06181 /* PlaceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceProtocol.swift; sourceTree = "<group>"; };
+		BDB00C9C291BD6B400D8778E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BDB461FD28BE5A2900D9FB4E /* UserTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTipsViewController.swift; sourceTree = "<group>"; };
 		BDB4620028BE5A5600D9FB4E /* TipsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTVCell.swift; sourceTree = "<group>"; };
 		BDB4620128BE5A5600D9FB4E /* TipsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsTVCell.xib; sourceTree = "<group>"; };
@@ -186,6 +186,7 @@
 		BD0E65CD28BA1F2300AD1AC8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BDB00C9B291BD67100D8778E /* MainTabBarVC */,
 				BDADAB9628CCA4FD007A59A4 /* MainVC */,
 				BDA6015A2914020900869330 /* FavoriteVC */,
 				BDADAB9328CC9E92007A59A4 /* CategoryVC */,
@@ -212,7 +213,6 @@
 		BD0E65CF28BA1F5700AD1AC8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */,
 				BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -284,7 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				BDB75B0E2915652400E17AEE /* FavoriteTableviewCell */,
-				BDA6015B2914026C00869330 /* FavoritePlacesViewController.swift */,
+				BDA4B9E9291C0D3200D8CFBA /* FavoritePlaceViewController.swift */,
+				BDA4B9EA291C0D3200D8CFBA /* FavoritePlaceViewController.xib */,
 			);
 			path = FavoriteVC;
 			sourceTree = "<group>";
@@ -309,9 +310,16 @@
 		BDADEB3B2915AF0F00C06181 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				BDADEB3C2915AF4B00C06181 /* PlaceProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BDB00C9B291BD67100D8778E /* MainTabBarVC */ = {
+			isa = PBXGroup;
+			children = (
+				BDB00C9C291BD6B400D8778E /* MainTabBarController.swift */,
+			);
+			path = MainTabBarVC;
 			sourceTree = "<group>";
 		};
 		BDB461FC28BE5A0400D9FB4E /* UserTipsVC */ = {
@@ -505,13 +513,13 @@
 				BD28E92628D856700054EE22 /* autumn.jpeg in Resources */,
 				BD0E65C628BA1BE900AD1AC8 /* LaunchScreen.storyboard in Resources */,
 				BDA160F828BD30B1003DF861 /* PhotoCVCell.xib in Resources */,
+				BDA4B9EC291C0D3200D8CFBA /* FavoritePlaceViewController.xib in Resources */,
 				BD0E65C328BA1BE900AD1AC8 /* Assets.xcassets in Resources */,
 				BD0E65D928BA22A200AD1AC8 /* Places.json in Resources */,
 				BDB4620328BE5A5600D9FB4E /* TipsTVCell.xib in Resources */,
 				BDC9145228BCF27A002F6DAD /* SearchTBCell.xib in Resources */,
 				BD0E65DF28BA230600AD1AC8 /* Error.json in Resources */,
 				BDB75B09291553C400E17AEE /* CitiesNames.json in Resources */,
-				BD0E65C128BA1BE600AD1AC8 /* Main.storyboard in Resources */,
 				BD0E65E128BA232000AD1AC8 /* Tips.json in Resources */,
 				BD0E65DB28BA22C500AD1AC8 /* Placesnearby.json in Resources */,
 				BD0E65D728BA228B00AD1AC8 /* Place.json in Resources */,
@@ -534,8 +542,8 @@
 				BD0E65E528BA240B00AD1AC8 /* PlaceModels.swift in Sources */,
 				BD0E65E328BA23BC00AD1AC8 /* PhotoItem.swift in Sources */,
 				BDA160F728BD30B1003DF861 /* PhotoCVCell.swift in Sources */,
+				BDB00C9D291BD6B400D8778E /* MainTabBarController.swift in Sources */,
 				BDB4620528BE5F8000D9FB4E /* NetworkProvider.swift in Sources */,
-				BDADEB3D2915AF4B00C06181 /* PlaceProtocol.swift in Sources */,
 				BD6203A228BB77C400DE8905 /* TipsModels.swift in Sources */,
 				BDB4620828BE6D3B00D9FB4E /* DetailPhotoViewController.swift in Sources */,
 				BDB4620228BE5A5600D9FB4E /* TipsTVCell.swift in Sources */,
@@ -547,8 +555,8 @@
 				BDA160FB28BD4857003DF861 /* UIViewController.swift in Sources */,
 				BD0E65EA28BA250300AD1AC8 /* placesAndNearbyModels.swift in Sources */,
 				BD9C764428D7680B006431DA /* ImageScrollView.swift in Sources */,
-				BDA6015C2914026C00869330 /* FavoritePlacesViewController.swift in Sources */,
 				BDB75ADD291539E500E17AEE /* FavoriteCity.swift in Sources */,
+				BDA4B9EB291C0D3200D8CFBA /* FavoritePlaceViewController.swift in Sources */,
 				BDB75B072915532000E17AEE /* OpenMapCity.swift in Sources */,
 				BDC9145128BCF27A002F6DAD /* SearchTBCell.swift in Sources */,
 				BD0E65E728BA247200AD1AC8 /* ContextModels.swift in Sources */,
@@ -566,14 +574,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BD0E65BF28BA1BE600AD1AC8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD0E65C028BA1BE600AD1AC8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BD0E65C428BA1BE900AD1AC8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -711,7 +711,7 @@
 				INFOPLIST_FILE = FoursquarePlacesApiTestProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -740,7 +740,7 @@
 				INFOPLIST_FILE = FoursquarePlacesApiTestProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

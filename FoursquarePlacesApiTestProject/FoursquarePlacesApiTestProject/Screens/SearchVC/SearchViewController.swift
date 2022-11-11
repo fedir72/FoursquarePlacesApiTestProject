@@ -17,20 +17,30 @@ protocol SearchViewControllerDelegate: AnyObject {
 class SearchViewController: UIViewController {
     
     weak var delegate: SearchViewControllerDelegate?
-    let fsqProvider = NetworkProvider()
+    private var location : CLLocation {
+        didSet {
+//            print(self.location.coordinate.latitude,
+//                  self.location.coordinate.longitude )
+            print("didset")
+                        self.getDataForDatasource(term: nil,
+                                                  category: nil,
+                                                  lat: location.coordinate.latitude,
+                                                  lon:location.coordinate.longitude )
+        }
+    }
+  
+    private let moya = NetworkProvider()
     
-    var isShowedSearchbar = false {
+    private var isShowedSearchbar = false {
         didSet { slideTableview() }
     }
-    var datasourse = [Place]() {
-        didSet { placesTableView.reloadData() }
-    }
-    var userLocation = CLLocation() {
+    private var datasourse = [Place]() {
         didSet {
-//        print(self.userLocation.coordinate.latitude,self.userLocation.coordinate.longitude )
-//            self.getDataForDatasource(term: nil, category: nil)
-      }
+            print("datasource:",datasourse.count)
+            placesTableView.reloadData()
+        }
     }
+   
     
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar(frame: .null)
@@ -50,17 +60,29 @@ class SearchViewController: UIViewController {
         return table
     }()
     
+   init(_ location: CLLocation) {
+        self.location = location
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+   required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
     //MARK: - lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonDisplayMode = .minimal
          setupUI()
          setupVC()
-         UserLocationManager.shared.getUserLocation { [weak self] location in
-            guard let self = self else { return }
-            self.userLocation = location
-            }
-         }
+        print("did load")
+        self.getDataForDatasource(term: nil,
+                                  category: nil,
+                                  lat: location.coordinate.latitude,
+                                  lon:location.coordinate.longitude )
+    }
 }
 
 //MARK: - UITableViewDatasource
@@ -169,7 +191,7 @@ private extension SearchViewController {
     }
     
     @objc func showMap() {
-        let vc = MapViewController(location: self.userLocation,
+        let vc = MapViewController(location: self.location ,
                                    places: self.datasourse,
                                    termText: self.title ?? "")
         navigationController?.pushViewController(vc, animated: true)
@@ -192,33 +214,37 @@ private extension SearchViewController {
         present(alert, animated: true)
     }
     
-    func getDataForDatasource(term: String?,category index: String? ) {
-        self.fsqProvider.foursquare.request(
+    func getDataForDatasource(term: String?,
+                              category index: String?,
+                              lat: Double,
+                              lon: Double) {
+        self.moya.foursquare.request(
          .getPlaces(term: term ?? "",
                 category: index ?? "",
-                lat: self.userLocation.coordinate.latitude,
-                long:self.userLocation.coordinate.longitude,
+                lat: lat,
+                long: lon,
                 radius: 1000,
                 limit: 50)) { result in
                 switch result {
                     case .success(let responce):
-                        guard let value = self.fsqProvider.decodejson(type: Places.self, from: responce.data) else {
+                        guard let value = self.moya.decodejson(type: Places.self, from: responce.data) else {
                             return
                         }
                         self.datasourse = value.results
-                        if term == nil, index == nil {
-                            delay(seconds: 0.5) {
-                                self.someWrongAlert("Now you see all kind of places",
-                                            """
-                                            if you wanna see more precise result
-                                            pleace enter searching term
-                                            or choise place category
-                                            """) { [weak self] in
-                                    self?.setupRightBarButtons()
-                                }
-
-                            }
-                        }
+                        self.setupRightBarButtons()
+//                        if term == nil, index == nil {
+//                            delay(seconds: 0.5) {
+//                                self.someWrongAlert("Now you see all kind of places",
+//                                            """
+//                                            if you wanna see more precise result
+//                                            pleace enter searching term
+//                                            or choise place category
+//                                            """) { [weak self] in
+//                                    self?.setupRightBarButtons()
+//                                }
+//
+//                            }
+//                        }
                     case .failure(let error): print(error.localizedDescription)
             }
         }
@@ -233,7 +259,10 @@ extension SearchViewController: CategoryViewControllerDelegate {
         self.placesTableView.isUserInteractionEnabled = true
         self.title = titletext
         delegate?.didSlideCategoryMenu()
-        self.getDataForDatasource(term: nil, category: category)
+        self.getDataForDatasource(term: nil,
+                                  category: category,
+                                  lat: location.coordinate.latitude ,
+                                  lon: location.coordinate.longitude)
     }
     
 }
@@ -246,7 +275,10 @@ extension SearchViewController: UISearchBarDelegate {
         isShowedSearchbar.toggle()
         navigationItem.leftBarButtonItem?.isEnabled = true
         self.title = txt.capitalized
-        self.getDataForDatasource(term: txt, category: nil)
+        self.getDataForDatasource(term: txt,
+                                  category: nil,
+                                  lat: location.coordinate.latitude ,
+                                  lon: location.coordinate.longitude )
     }
     
 }

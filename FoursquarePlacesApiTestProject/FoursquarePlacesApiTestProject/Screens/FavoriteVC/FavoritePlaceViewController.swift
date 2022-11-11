@@ -1,8 +1,8 @@
 //
-//  FavoritePlacesViewController.swift
+//  FavoritePlaceViewController.swift
 //  FoursquarePlacesApiTestProject
 //
-//  Created by Fedii Ihor on 03.11.2022.
+//  Created by Fedii Ihor on 09.11.2022.
 //
 
 import UIKit
@@ -10,19 +10,20 @@ import Moya
 import SnapKit
 import RealmSwift
 
-class FavoritePlacesViewController: UIViewController {
+class FavoritePlaceViewController: UIViewController {
     
     private let realm = try! Realm()
     private let moya = NetworkProvider()
     private var datasource: Results<FavoriteCity>?
     private var itemsToken: NotificationToken?
-    private var isTablevieEditable = true {
+    
+    private var tablevieIsEditable = true {
         didSet {
             cleanDatasourceButton.snp.updateConstraints{
-                $0.bottom.equalToSuperview().offset(isTablevieEditable ? -20 : -90)
+                $0.bottom.equalToSuperview().offset(tablevieIsEditable ? -20 : -100)
             }
-                UIView.animate(withDuration: 0.3) {
-                    self.view.layoutSubviews()
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutSubviews()
             }
         }
     }
@@ -35,7 +36,7 @@ class FavoritePlacesViewController: UIViewController {
         }
     }
     
-//MARK: - @IBOutlets
+    //MARK: - @IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var cleanDatasourceButton: UIButton!
     
@@ -44,20 +45,20 @@ class FavoritePlacesViewController: UIViewController {
         super.viewDidLoad()
         datasource = realm.objects(FavoriteCity.self)
         setupTAbleView()
-       // setupCollectionView()
+        setupBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         itemsToken = datasource?.observe { [weak tableView] changes in
             guard let tableView = tableView else { return }
-          switch changes {
-          case .initial:
-            tableView.reloadData()
-          case .update(_, let deletions, let insertions, let updates):
-            tableView.applyChanges(deletions: deletions, insertions: insertions, updates: updates)
-          case .error: break
-          }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let updates):
+                tableView.applyChanges(deletions: deletions, insertions: insertions, updates: updates)
+            case .error: break
+            }
         }
     }
     
@@ -66,28 +67,41 @@ class FavoritePlacesViewController: UIViewController {
         itemsToken?.invalidate()
     }
     
-//MARK: - @IBActions
-    @IBAction private func searchPlacesButtonPressed(_ sender: Any) {
-        if isTablevieEditable {
+    //MARK: - @IBActions
+    @objc private func searchPlacesButtonPressed() {
+        if tablevieIsEditable {
             self.searchNewCityAlert { [weak self] term in
                 self?.searchCity(by: term)
             }
         }
     }
-    @IBAction private func refreshButtonTapped(_ sender: Any) {
+    @objc private func editTableview() {
         UIView.animate(withDuration: 0.3) {
-            self.isTablevieEditable.toggle()
+            self.tablevieIsEditable.toggle()
             self.tableView.isEditing.toggle()
         }
     }
-    @IBAction private func cleanDatasourceDidTap(_ sender: Any) {
-        print("clean datasourse")
-            }
-  
+    @IBAction func emtyFavoritelistDidTap(_ sender: Any) {
+        try!  self.realm.write {
+            realm.deleteAll()
+        }
+    }
+    
+    
 }
 
 //MARK: - private functions
-private extension FavoritePlacesViewController {
+private extension FavoritePlaceViewController {
+    func setupBarButtons() {
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .edit,
+                            target: self,
+                            action: #selector(editTableview)),
+            UIBarButtonItem(barButtonSystemItem: .search,
+                            target: self,
+                            action: #selector(searchPlacesButtonPressed))
+        ]
+    }
     
     func setupTAbleView() {
         tableView.register(FavoriteTBLCell.nib(),
@@ -139,7 +153,7 @@ private extension FavoritePlacesViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension FavoritePlacesViewController: UITableViewDataSource {
+extension FavoritePlaceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return datasource?.count ?? 0
@@ -159,7 +173,7 @@ extension FavoritePlacesViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension FavoritePlacesViewController: UITableViewDelegate {
+extension FavoritePlaceViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -192,9 +206,12 @@ extension FavoritePlacesViewController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let city = self.datasource?[indexPath.row] else { return }
+        let vc = MainViewController()
+        vc.currentLocation = city.createCLLocation()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-

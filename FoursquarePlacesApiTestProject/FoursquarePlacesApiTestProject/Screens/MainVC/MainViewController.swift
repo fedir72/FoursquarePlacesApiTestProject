@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainViewController: UIViewController {
     
     private var categoryState = false
-    
-    let categoryVC = CategoryViewController()
-    let searchVC = SearchViewController()
+     var currentLocation = CLLocation() {
+        didSet { print(currentLocation) }
+    }
+    lazy private var categoryVC = CategoryViewController()
+    lazy private var searchVC = SearchViewController(currentLocation)
     var navVC: UINavigationController?
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +35,12 @@ class MainViewController: UIViewController {
         searchVC.delegate = self
         categoryVC.delegate = searchVC
         let navVC = UINavigationController(rootViewController: searchVC)
-       // navVC.navigationBar.isTranslucent = true
         navVC.navigationItem.titleView?.isOpaque = true
+        
         addChild(navVC)
         view.addSubview(navVC.view)
         didMove(toParent: self)
+        
         self.navVC = navVC
     }
     
@@ -44,8 +51,6 @@ class MainViewController: UIViewController {
                              usingSpringWithDamping: 0.8,
                              initialSpringVelocity: 0.2,
                              options: .curveEaseIn) {
-                  
-                  
                   self.navVC?.view.frame.origin.x = ( self.categoryState ? 0 : 300)
               } completion: { [weak self] done in
                   self?.categoryState.toggle()

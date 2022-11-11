@@ -17,10 +17,11 @@ class FavoriteTBLCell: UITableViewCell {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//    }
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = ( isSelected ? .white : .tertiarySystemBackground )
+        }
+    }
     
     func setupCell(by city: FavoriteCity) {
         self.countryNameLabel.text = city.country

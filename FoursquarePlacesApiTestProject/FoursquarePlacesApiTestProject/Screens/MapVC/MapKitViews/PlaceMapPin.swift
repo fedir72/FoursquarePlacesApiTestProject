@@ -16,6 +16,7 @@ class PlaceMapPin: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
+    
     var locationName: String? {
         return title
     }
@@ -25,7 +26,7 @@ class PlaceMapPin: NSObject, MKAnnotation {
     }
   
     init(place: Place ) {
-        self.imageUrl = place.categories[0].icon.iconURl(resolution: .micro)
+        self.imageUrl = place.categories[0].icon.iconURl(resolution: .small) 
         self.title = place.name
         self.subtitle = place.categories[0].name
         self.coordinate = .init(latitude: place.geocodes.main?.latitude ?? 0.0,

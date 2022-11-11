@@ -17,7 +17,7 @@ class MapViewController: UIViewController {
     let termText: String
     let termPlaceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Bananarama"
+        label.text = "Your location is now"
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .systemRed
