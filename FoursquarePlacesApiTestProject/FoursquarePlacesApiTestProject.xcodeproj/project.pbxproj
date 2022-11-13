@@ -190,7 +190,7 @@
 				BDADAB9628CCA4FD007A59A4 /* MainVC */,
 				BDA6015A2914020900869330 /* FavoriteVC */,
 				BDADAB9328CC9E92007A59A4 /* CategoryVC */,
-				BDC9144D28BCF245002F6DAD /* SearchVC */,
+				BDC9144D28BCF245002F6DAD /* QurrentPositionVC */,
 				BD0D1BD228D1DFE800C512BD /* MapVC */,
 				BDA3722528BD1723005EDD2B /* PhotosVC */,
 				BDB4620628BE6CF000D9FB4E /* DetailphotoVC */,
@@ -283,9 +283,9 @@
 		BDA6015A2914020900869330 /* FavoriteVC */ = {
 			isa = PBXGroup;
 			children = (
-				BDB75B0E2915652400E17AEE /* FavoriteTableviewCell */,
 				BDA4B9E9291C0D3200D8CFBA /* FavoritePlaceViewController.swift */,
 				BDA4B9EA291C0D3200D8CFBA /* FavoritePlaceViewController.xib */,
+				BDB75B0E2915652400E17AEE /* FavoriteTableviewCell */,
 			);
 			path = FavoriteVC;
 			sourceTree = "<group>";
@@ -411,13 +411,13 @@
 			path = LocationManager;
 			sourceTree = "<group>";
 		};
-		BDC9144D28BCF245002F6DAD /* SearchVC */ = {
+		BDC9144D28BCF245002F6DAD /* QurrentPositionVC */ = {
 			isa = PBXGroup;
 			children = (
-				BDC9144E28BCF24F002F6DAD /* MainTBCell */,
 				BD0E65BD28BA1BE600AD1AC8 /* CurrentPositionViewController.swift */,
+				BDC9144E28BCF24F002F6DAD /* MainTBCell */,
 			);
-			path = SearchVC;
+			path = QurrentPositionVC;
 			sourceTree = "<group>";
 		};
 		BDC9144E28BCF24F002F6DAD /* MainTBCell */ = {

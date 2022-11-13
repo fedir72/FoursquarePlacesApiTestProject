@@ -51,7 +51,7 @@ private extension MainTabBarController {
                                       controller: vc,
                                       tabBarText: "Current",
                                       tabBarimage: "mappin.circle")
-        let favoriteVC = createController(addNavVC: true,
+        let favoriteVC = createController(addNavVC: false,
                                           controller: FavoritePlaceViewController(),
                                           tabBarText: "Favorites",
                                           tabBarimage: "star.fill")

@@ -109,7 +109,7 @@ extension CurrentPositionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = datasourse[indexPath.row]
-        print(item.name,item.categories)
+       // print(item.name,item.categories)
         self.cellDidTap(id: item.fsq_id, title: item.name )
  }
 }
@@ -164,8 +164,9 @@ private extension CurrentPositionViewController {
     }
     
     func setupVC() {
-        navigationItem.titleView?.tintColor = .white
-        view.backgroundColor = UIColor(named: "MyTint")
+        navigationController?.navigationBar.tintColor = UIColor(named: "MyTint")
+       // navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        view.backgroundColor = UIColor(named: "MyColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Nearest"
         

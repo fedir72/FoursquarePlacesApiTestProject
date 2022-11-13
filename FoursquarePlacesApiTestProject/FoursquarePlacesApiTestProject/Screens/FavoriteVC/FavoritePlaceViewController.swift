@@ -45,7 +45,6 @@ class FavoritePlaceViewController: UIViewController {
         super.viewDidLoad()
         datasource = realm.objects(RealmFavoriteCity.self)
         setupTAbleView()
-        setupBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,19 +67,22 @@ class FavoritePlaceViewController: UIViewController {
     }
     
     //MARK: - @IBActions
-    @objc private func searchPlacesButtonPressed() {
+    @IBAction func editListButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.tablevieIsEditable.toggle()
+            self.tableView.isEditing.toggle()
+        }
+    }
+    
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
         if tablevieIsEditable {
             self.searchNewCityAlert { [weak self] term in
                 self?.searchCity(by: term)
             }
         }
     }
-    @objc private func editTableview() {
-        UIView.animate(withDuration: 0.3) {
-            self.tablevieIsEditable.toggle()
-            self.tableView.isEditing.toggle()
-        }
-    }
+
     @IBAction func emtyFavoritelistDidTap(_ sender: Any) {
         try!  self.realm.write {
             realm.deleteAll()
@@ -92,16 +94,6 @@ class FavoritePlaceViewController: UIViewController {
 
 //MARK: - private functions
 private extension FavoritePlaceViewController {
-    func setupBarButtons() {
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem: .edit,
-                            target: self,
-                            action: #selector(editTableview)),
-            UIBarButtonItem(barButtonSystemItem: .search,
-                            target: self,
-                            action: #selector(searchPlacesButtonPressed))
-        ]
-    }
     
     func setupTAbleView() {
         tableView.register(FavoriteTBLCell.nib(),
@@ -211,7 +203,9 @@ extension FavoritePlaceViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let city = self.datasource?[indexPath.row] else { return }
         let vc = MainViewController()
+        vc.title = city.name
         vc.currentLocation = city.createCLLocation()
-        navigationController?.pushViewController(vc, animated: true)
+        //vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }

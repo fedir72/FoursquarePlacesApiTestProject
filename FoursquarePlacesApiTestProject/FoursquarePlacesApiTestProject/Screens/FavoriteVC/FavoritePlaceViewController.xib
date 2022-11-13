@@ -21,12 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-31-I9u">
-                    <rect key="frame" x="0.0" y="47" width="390" height="777"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbO-3k-Jm3">
-                    <rect key="frame" x="0.0" y="831" width="390" height="60"/>
+                    <rect key="frame" x="0.0" y="810" width="390" height="60"/>
                     <color key="backgroundColor" systemColor="systemRedColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="yZ5-j3-i3s"/>
@@ -37,25 +33,60 @@
                         <action selector="emtyFavoritelistDidTap:" destination="-1" eventType="touchUpInside" id="Jfc-bD-vMi"/>
                     </connections>
                 </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="znd-wR-W39">
+                    <rect key="frame" x="265" y="47" width="115" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="Cu6-Tj-unZ">
+                            <rect key="frame" x="0.0" y="0.0" width="55" height="50"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                            <connections>
+                                <action selector="editListButtonPressed:" destination="-1" eventType="touchUpInside" id="EGZ-E5-NdP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="TqC-hD-FmF">
+                            <rect key="frame" x="60" y="0.0" width="55" height="50"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="magnifyingglass" catalog="system"/>
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="dIp-bC-99F"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Wsg-HS-Ydt"/>
+                    </constraints>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A1a-31-I9u">
+                    <rect key="frame" x="0.0" y="105" width="390" height="695"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="A1a-31-I9u" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Vq-vq-I6l"/>
-                <constraint firstItem="A1a-31-I9u" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="EGQ-Rd-FFm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="znd-wR-W39" secondAttribute="trailing" constant="10" id="HSg-sU-2C2"/>
                 <constraint firstItem="SbO-3k-Jm3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TR9-XP-oXQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SbO-3k-Jm3" secondAttribute="trailing" id="UdZ-mU-5Hp"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A1a-31-I9u" secondAttribute="trailing" id="VY9-lp-GcO"/>
-                <constraint firstAttribute="bottom" secondItem="A1a-31-I9u" secondAttribute="bottom" priority="750" constant="20" id="mW4-iI-PNz"/>
-                <constraint firstItem="SbO-3k-Jm3" firstAttribute="top" secondItem="A1a-31-I9u" secondAttribute="bottom" constant="7" id="xP9-6C-e79"/>
+                <constraint firstItem="A1a-31-I9u" firstAttribute="top" secondItem="znd-wR-W39" secondAttribute="bottom" constant="8" symbolic="YES" id="VnT-Tk-OFF"/>
+                <constraint firstItem="znd-wR-W39" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vt0-rZ-Etg"/>
+                <constraint firstItem="A1a-31-I9u" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Wil-BY-ROu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="A1a-31-I9u" secondAttribute="bottom" priority="250" constant="10" id="afE-wc-Ci2"/>
+                <constraint firstItem="SbO-3k-Jm3" firstAttribute="top" secondItem="A1a-31-I9u" secondAttribute="bottom" constant="10" id="hQQ-Yp-TWh"/>
+                <constraint firstItem="A1a-31-I9u" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iJa-Uv-7yS"/>
             </constraints>
             <point key="canvasLocation" x="130.76923076923077" y="-11.374407582938389"/>
         </view>
     </objects>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="trash.square" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

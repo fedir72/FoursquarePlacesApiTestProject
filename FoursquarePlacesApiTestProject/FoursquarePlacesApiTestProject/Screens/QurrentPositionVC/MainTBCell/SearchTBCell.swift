@@ -23,7 +23,7 @@ class SearchTBCell: UITableViewCell {
         super.awakeFromNib()
         backgroundColor = .secondarySystemBackground
         iconImageView.layer.cornerRadius = 8
-        iconImageView.backgroundColor = UIColor(named: "MyTint")
+        iconImageView.backgroundColor = UIColor(named: "MyColor")
         iconImageView.tintColor = .white
     }
 
