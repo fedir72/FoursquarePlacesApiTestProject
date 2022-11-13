@@ -77,10 +77,10 @@ class CurrentPositionViewController: UIViewController {
         navigationItem.backButtonDisplayMode = .minimal
          setupUI()
          setupVC()
-        self.getDataForDatasource(term: nil,
-                                  category: nil,
-                                  lat: location.coordinate.latitude,
-                                  lon:location.coordinate.longitude )
+//        self.getDataForDatasource(term: nil,
+//                                  category: nil,
+//                                  lat: location.coordinate.latitude,
+//                                  lon:location.coordinate.longitude )
     }
 }
 
@@ -200,19 +200,10 @@ private extension CurrentPositionViewController {
     
     
     func cellDidTap(id: String,title: String ) {
-        let alert = UIAlertController(title: "Atencion", message: "Please make choise", preferredStyle: .alert)
-        alert.addAction(.init(title: "Cancel", style: .destructive))
-        alert.addAction(.init(title: "Show photos", style: .default) { _ in
-              let vc =  PhotoViewController()
+              let vc =  PlacedetailViewController()
                 vc.fsqId = id
-                vc.title = "\(title) images"
+                vc.title = "\(title)"
                 self.navigationController?.pushViewController(vc, animated: true)
-        })
-        alert.addAction(.init(title: "Show tips", style: .default) { _ in
-
-            
-        })
-        present(alert, animated: true)
     }
     
     func getDataForDatasource(term: String?,

@@ -15,7 +15,7 @@ private struct Constant {
     static let numberOfcellsInRow = "numberOfcellsInRow"
 }
 
-class PhotoViewController: UIViewController {
+class PlacedetailViewController: UIViewController {
     
     enum CellSize {
         case small
@@ -24,20 +24,21 @@ class PhotoViewController: UIViewController {
         case xlarge
     }
     
+    let moya = NetworkProvider()
     static let id = "PhotoViewController"
     let userdefault = UserDefaults.standard
     private let fsqProvider = NetworkProvider()
     var fsqId = ""
     
     
-    var isShowedTipsTableview = false {
-        didSet {
-            switch isShowedTipsTableview {
-            case true: self.showTipsTableView()
-            case false: self.closeTipsTableView()
-            }
-        }
-    }
+//    var isShowedTipsTableview = false {
+//        didSet {
+//            switch isShowedTipsTableview {
+//            case true: self.showTipsTableView()
+//            case false: self.closeTipsTableView()
+//            }
+//        }
+//    }
     //MARK: - handle collectionview
     private lazy var cellSize: CellSize = self.getDataFromUserdefauils() {
         didSet { setupItemInRow() }
@@ -49,9 +50,22 @@ class PhotoViewController: UIViewController {
             self.collection.reloadData()
         }
     }
+    
+    //MARK: - datasources
     private var dataSourse = [PhotoItem]() {
         didSet {
             self.collection.reloadData()
+        }
+    }
+    private var tipsDataSource: Tips = [] {
+        didSet {
+            if tipsDataSource.isEmpty {
+                closeTipsTableView()
+            } else {
+                //print(tipsDataSource)
+                showTipsTableView()
+                //tipsTable?.reloadData()
+            }
         }
     }
     
@@ -142,7 +156,7 @@ class PhotoViewController: UIViewController {
 }
 
 
-extension PhotoViewController: UICollectionViewDataSource {
+extension PlacedetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
           numberOfItemsInSection section: Int) -> Int {
         return dataSourse.count
@@ -162,7 +176,7 @@ extension PhotoViewController: UICollectionViewDataSource {
     }
 }
 
-extension PhotoViewController: UICollectionViewDelegate {
+extension PlacedetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = dataSourse[indexPath.item]
         guard let w = item.width,
@@ -178,7 +192,7 @@ extension PhotoViewController: UICollectionViewDelegate {
     }
 }
 
-extension PhotoViewController: UICollectionViewDelegateFlowLayout {
+extension PlacedetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collection.bounds.size.width
         let cellWidth = (width - (Constant.minimumSpacing*(itemInRow+1)))/itemInRow
@@ -187,7 +201,7 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - private methods
-private extension PhotoViewController {
+private extension PlacedetailViewController {
     
     func setupUI() {
         view.backgroundColor = .systemBackground
@@ -204,8 +218,8 @@ private extension PhotoViewController {
             image: UIImage(systemName: "eyeglasses"),
             primaryAction: nil,
             menu: self.menu()),
-        UIBarButtonItem(image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis"),
-                        style: .done,
+        UIBarButtonItem(title: "Tips",
+                        style: .plain,
                         target: self,
                         action: #selector(showTips))
         ]
@@ -214,33 +228,42 @@ private extension PhotoViewController {
     func setupTipsTable() {
         self.tipsTable = UITableView(frame: .zero, style: .grouped)
         view.addSubview(tipsTable!)
-        tipsTable?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tipsTable?.layer.cornerRadius = 20
-        tipsTable?.layer.opacity = 0.01
-        tipsTable?.rowHeight = 40
-        tipsTable?.dataSource = self
-        tipsTable?.snp.makeConstraints {
+        guard let tipsTable else { return }
+        //tipsTable.estimatedRowHeight = 100
+        tipsTable.register(TipsTableViewCell.nib,
+                            forCellReuseIdentifier: TipsTableViewCell.id)
+        tipsTable.layer.cornerRadius = 20
+        tipsTable.layer.opacity = 0.01
+        //tipsTable?.rowHeight = 40
+        tipsTable.dataSource = self
+        tipsTable.delegate = self
+        tipsTable.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview().inset(10)
             $0.height.equalToSuperview().multipliedBy(0.6)
         }
     }
     func deleletable() {
+        collection.isUserInteractionEnabled = true
         tipsTable?.removeFromSuperview()
         tipsTable = nil
     }
     
     @objc func showTips() {
-        self.isShowedTipsTableview.toggle()
+        if tipsDataSource.isEmpty {
+            getTips(by: fsqId)
+        } else {
+            tipsDataSource = []
+        }
     }
     
     func showTipsTableView() {
         self.setupTipsTable()
-        self.collection.isUserInteractionEnabled = (self.isShowedTipsTableview ? false : true)
+        self.collection.isUserInteractionEnabled = (self.tipsDataSource.isEmpty ? true : false)
         UIView.animate(withDuration: 0.3,
                        delay: 0.1,
                        usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.3){
-            self.collection.layer.opacity = (self.isShowedTipsTableview ? 0.2 : 1.0)
+            self.collection.layer.opacity = (self.tipsDataSource.isEmpty ? 1.0 : 0.2)
         }
         UIView.animate(withDuration: 0.3,
                        delay: 0.3){
@@ -266,6 +289,7 @@ private extension PhotoViewController {
             self.collection.layer.opacity = 1.0
         }
     }
+    
     func menu() -> UIMenu {
         let menu = UIMenu(
             title: "choise the size of photos",
@@ -287,19 +311,52 @@ private extension PhotoViewController {
         
         return menu
     }
+    
+    func getTips(by placeId: String) {
+        moya.foursquare.request(.placeTips(id: placeId)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                
+            case .success(let responce):
+                guard let newSource = self.moya.decodejson(type: Tips.self, from: responce.data)
+                else {
+                    return
+                }
+                switch newSource.isEmpty {
+                case true:
+                    self.someWrongAlert("We sorry",
+                                   "but these place do not have any  user tips",
+                                   completion: nil)
+                case false:
+                    self.tipsDataSource = newSource
+                }
+                
+            case .failure(let error):
+                self.someWrongAlert("Attencion",
+                                    error.localizedDescription,
+                                    completion: nil)
+            }
+        }
+    }
 }
 
-extension PhotoViewController: UITableViewDataSource {
+extension PlacedetailViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tipsDataSource.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tipsTable?.dequeueReusableCell(withIdentifier: "cell") else {
-            return UITableViewCell()
-        }
-        cell.textLabel?.text = "Text \(indexPath.row)"
-        return cell
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       if let cell = tipsTable?.dequeueReusableCell(
+            withIdentifier: TipsTableViewCell.id,
+            for: indexPath) as? TipsTableViewCell {
+           let tip = tipsDataSource[indexPath.row]
+           cell.setupCell(by: tip)
+           return cell
+       } else {
+           return UITableViewCell()
+       }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -307,3 +364,8 @@ extension PhotoViewController: UITableViewDataSource {
     }
     
 }
+
+extension PlacedetailViewController: UITableViewDelegate {
+   
+}
+

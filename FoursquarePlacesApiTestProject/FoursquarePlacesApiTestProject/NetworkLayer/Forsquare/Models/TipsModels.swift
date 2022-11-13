@@ -8,9 +8,23 @@
 import Foundation
 
 struct Tip: Decodable {
-   let id: String
-   let created_at: String
-   let text: String
+   let id: String?
+   let created_at: String?
+   let text: String?
+}
+
+extension Tip {
+    var dateText: String {
+        guard let value = created_at?.split(separator: "T").first else {return "no date"}
+        return String(value)
+    }
+    
+    var textForCell: String {
+        return """
+               \(self.dateText)
+               \(self.text ?? "tips not avalilable")
+               """
+    }
 }
 
 typealias Tips = [Tip]

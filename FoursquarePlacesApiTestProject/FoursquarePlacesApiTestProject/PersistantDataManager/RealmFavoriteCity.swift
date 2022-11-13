@@ -11,7 +11,6 @@ import CoreLocation
 
 
 class RealmFavoriteCity: Object {
-    
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var name: String = ""
     @Persisted var lat: Double = 0.0
@@ -48,9 +47,5 @@ extension RealmFavoriteCity {
                             country: weatherModel.country ,
                             state: weatherModel.state )
     }
-    
-//    static func createCLLocation(by city: FavoriteCity) -> CLLocation {
-//        return CLLocation(latitude: city.lat, longitude: city.lon)
-//    }
-    
+
 }

@@ -60,7 +60,6 @@ class FavoritePlaceViewController: UIViewController {
             }
         }
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         itemsToken?.invalidate()
@@ -73,17 +72,14 @@ class FavoritePlaceViewController: UIViewController {
             self.tableView.isEditing.toggle()
         }
     }
-    
-    
-    @IBAction func searchButtonPressed(_ sender: Any) {
+    @IBAction private func searchButtonPressed(_ sender: Any) {
         if tablevieIsEditable {
             self.searchNewCityAlert { [weak self] term in
                 self?.searchCity(by: term)
             }
         }
     }
-
-    @IBAction func emtyFavoritelistDidTap(_ sender: Any) {
+    @IBAction private func emtyFavoritelistDidTap(_ sender: Any) {
         try!  self.realm.write {
             realm.deleteAll()
         }

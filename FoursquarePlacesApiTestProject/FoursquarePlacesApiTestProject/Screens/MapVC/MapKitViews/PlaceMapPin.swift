@@ -30,7 +30,7 @@ class PlaceMapPin: NSObject, MKAnnotation {
             self.imageUrl = place.categories?[0].icon.iconURl(resolution: .micro)
             self.subtitle = place.categories![0].name
         } else {
-           let plaseholderURL = Bundle.main.url(forResource: "globe", withExtension: "png")
+           let plaseholderURL = Bundle.main.url(forResource: "globeCustom", withExtension: "png")
             self .imageUrl = plaseholderURL
             self.subtitle = ""
         }
